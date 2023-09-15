@@ -117,7 +117,25 @@ VALUES
 ('A Lista de Schindler','Inglês','14','90 minutos'),
 ('Toy Story','Inglês','Livre','120 minutos'),
 ('Matrix','Inglês','16','80 minutos'),
-
+`
+const ADD_PRECOS_DATA =`
+INSERT INTO preços (dia_semana, valor) 
+VALUES
+('segundafeira','12,00'),
+('quintafeira','18,00')
+('terçafeira','15,00')
+('sextafeira','24,00')
+('quartafeira','15,00')
+('terçafeira','15,00')
+('quintafeira','18,00')
+('quartafeira','15,00')
+('sextafeira','24,00')
+('quintafeira','18,00')
+('terçafeira','15,00')
+('quartafeira','15,00')
+('segundafeira','12,00')
+('sextafeira','24,00')
+('quintafeira','18,00')
 `
 
 /**
