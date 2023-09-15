@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS "cadastro_usuarios" (
     "id_endereco_fk" INTEGER
   );
 `
+
 const ENDERECO_TABLE = `
 CREATE TABLE IF NOT EXISTS "endereco" (
     "id_endereco" INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -29,7 +30,8 @@ CREATE TABLE IF NOT EXISTS "endereco" (
 `
 
 /**
- * script de inserção de dados base
+ * script de inserção de dados base (seria os usuarios ja cadastrados / o DAO ira permitir q a infor
+ * mação passada pelo usuario seja inserida no bd automaticamente)
  */
 const ADD_CADASTRO_USUARIOS_DATA = `
 INSERT INTO cadastro_usuarios (nome_usuario, sobrenome, email_cadastro, cpf, senha_cadastro, telefone)
