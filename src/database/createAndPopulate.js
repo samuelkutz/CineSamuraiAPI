@@ -347,6 +347,16 @@ function criaTabelaSessao() {
     });
 }
 
+function criaTabelaIngresso() {
+    Database.run(INGRESSO_TABLE, (error) => {
+        if (error) {
+            console.log("Erro ao criar tabela Ingresso")
+        } else {
+            console.log("Tabela Ingresso criada com sucesso!")
+        }
+    });
+}
+
 /**
  * Function que polula via SQLite as tabelas
  */
