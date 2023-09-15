@@ -118,7 +118,7 @@ VALUES
 ('Toy Story','Inglês','Livre','120 minutos'),
 ('Matrix','Inglês','16','80 minutos');
 `
-const ADD_PRECOS_DATA =`
+const ADD_PRECO_DATA =`
 INSERT INTO preços (dia_semana, valor) 
 VALUES
 ('segundafeira','12,00'),
@@ -180,6 +180,36 @@ function criaTabelaEndereco(){
      });
 }
 
+function criaTabelaFilmes() {
+    Database.run(FILMES_TABLE, (error)=> {
+       if (error) {
+            console.log("Erro ao criar tabela de Filmes")
+        } else {
+            console.log("Tabela Filmes criada com sucesso!")
+        }
+    });
+}
+
+function criaTabelaPreco(){
+    Database.run(PRECO_TABLE, (error)=> {
+        if (error) {
+             console.log("Erro ao criar tabela de Preço")
+         } else {
+             console.log("Tabela Preço criada com sucesso!")
+         }
+     });
+}
+
+function criaTabelaProgramacaoGeral(){
+    Database.run(PROGRAMACAO_GERAL_TABLE, (error)=> {
+        if (error) {
+             console.log("Erro ao criar tabela de Programação Geral")
+         } else {
+             console.log("Tabela Programação Geral criada com sucesso!")
+         }
+     });
+}
+
 /**
  * Function que polula via SQLite as tabelas
  */
@@ -200,10 +230,11 @@ function populaTabelaEndereco() {
         console.log("Erro ao popular tabela de Endereço")
         }
         else {
-            console.log("Tabela Endereçi populada com sucesso!")
+            console.log("Tabela Endereço populada com sucesso!")
         }
     });
 }
+
 
 
 /**
