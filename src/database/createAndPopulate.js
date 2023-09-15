@@ -188,6 +188,20 @@ VALUES
 (14,'2023-07-10 14:00','animação'),
 (15,'2023-04-10 13:00','Ação');
 `
+const ADD_SALA_DATA = `
+INSERT INTO sala (capacidade, nome_sala)
+VALUES 
+(70,'Cinepolis'),
+(38,'UCI Cinemas'),
+(20,'Kinoplex'),
+(40,'Cinemark'),
+(30,'Moviecom'),
+(35,'Cineart'),
+(45,'Cinépolis Macro'),
+(15,'Cinesystem'),
+(55,'Cinépolis IMAX.'),
+(60,'Cinemark XD'); 
+`
 
 /**
  * Function que aplica a criação das tabelas
