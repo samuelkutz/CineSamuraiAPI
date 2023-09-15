@@ -448,6 +448,16 @@ function populaTabelaSessao() {
     });
 }
 
+function populaTabelaIngresso() {
+    Database.run(ADD_INGRESSO_DATA, (error) => {
+        if (error) {
+            console.log("Erro ao popular tabela Ingresso")
+        }
+        else {
+            console.log("Tabela Ingresso populada com sucesso!")
+        }
+    });
+} 
 /**
  * Roda as funções de criação de tabela e população em serie (Uma após a outra)
  */
