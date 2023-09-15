@@ -240,7 +240,30 @@ VALUES
 (14,'4D',2,2,3),
 (15,'2D',3,4,5);
 `
-
+const ADD_INGRESSO_DATA= `
+INSERT INTO ingresso (tipo_ingresso, id_preco_fk, id_sessao_fk, id_usuario_fk)
+VALUES 
+('True',1,3,1),
+('False',2,2,3),
+('True',2,3,3),
+('False'4,3,2),
+('True'5,3,4),
+('False'6,3,5),
+('True'7,8,9),
+('False'8,9,4),
+('True'9,2,4),
+('False'10,1,4),
+('True'11,2,4),
+('False'12,8,7),
+('True'13,4,3),
+('False'14,5,3),
+('True'15,1,3),
+('False'16,5,3),
+('True'17,1,7),
+('False'18,5,3),
+('True'19,5,3),
+('False'20,1,3);
+`
 /**
  * Function que aplica a criação das tabelas
  */
