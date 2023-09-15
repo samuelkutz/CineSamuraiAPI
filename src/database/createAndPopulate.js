@@ -467,9 +467,17 @@ Database.serialize(() => {
     criaTabelaFilmes();
     criaTabelaPreco();
     criaTabelaProgramacaoGeral();
+    criaTabelaSala();
+    criaTabelaPoltrona();
+    criaTabelaSessao();
+    criaTabelaIngresso();
     populaTabelaEndereco();
     populaTabelaCadastroUsuarios();
     populaTabelaFilmes();
     populaTabelaPreco();
     populaTabelaProgramacaoGeral();
+    populaTabelaSala();
+    populaTabelaPoltrona();
+    populaTabelaSessao();
+    populaTabelaIngresso();
 })
