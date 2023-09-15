@@ -275,6 +275,12 @@ function populaTabelaProgramacaoGeral() {
 Database.serialize(()=>{
     criaTabelaCadastroUsuarios();
     criaTabelaEndereco();
+    criaTabelaFilmes();
+    criaTabelaPreco();
+    criaTabelaProgramacaoGeral();
     populaTabelaEndereco();
     populaTabelaCadastroUsuarios();
+    populaTabelaFilmes();
+    populaTabelaPreco();
+    populaTabelaProgramacaoGeral();
 })
