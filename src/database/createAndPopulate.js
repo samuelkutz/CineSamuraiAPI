@@ -327,6 +327,16 @@ function criaTabelaSala() {
     });
 }
 
+function criaTabelaPoltrona() {
+    Database.run(POLTRONA_TABLE, (error) => {
+        if (error) {
+            console.log("Erro ao criar tabela Poltrona")
+        } else {
+            console.log("Tabela Poltrona criada com sucesso!")
+        }
+    });
+}
+
 /**
  * Function que polula via SQLite as tabelas
  */
