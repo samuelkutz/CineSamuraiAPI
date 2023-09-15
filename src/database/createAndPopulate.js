@@ -235,6 +235,38 @@ function populaTabelaEndereco() {
     });
 }
 
+function populaTabelaFilmes() {
+    Database.run(ADD_FILMES_DATA, (error)=> {
+       if (error) {
+        console.log("Erro ao popular tabela de Filmes")
+        }
+        else {
+            console.log("Tabela Filmes populada com sucesso!")
+        }
+    });
+}
+
+function populaTabelaPreco() {
+    Database.run(ADD_PRECO_DATA, (error)=> {
+       if (error) {
+        console.log("Erro ao popular tabela de Preço")
+        }
+        else {
+            console.log("Tabela Preço populada com sucesso!")
+        }
+    });
+}
+
+function populaTabelaProgramacaoGeral() {
+    Database.run(ADD_PROGRAMACAO_GERAL_DATA, (error)=> {
+       if (error) {
+        console.log("Erro ao popular tabela de Programação Geral")
+        }
+        else {
+            console.log("Tabela Programação Geral populada com sucesso!")
+        }
+    });
+}
 
 
 /**
