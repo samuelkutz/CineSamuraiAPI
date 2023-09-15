@@ -202,6 +202,25 @@ VALUES
 (55,'Cinépolis IMAX.'),
 (60,'Cinemark XD'); 
 `
+const ADD_POLTRONA_DATA = `
+INSERT INTO poltrona (tipo_poltrona,disponibilidade) VALUES 
+('Obeso','True'),
+('Cadeirante','True'),
+('Mobilidade reduzida','True'),
+('Acompanhante','False'),
+('Regular','True'),
+('Mobilidade reduzida','True'),
+('Obeso','False'),
+('Mobilidade reduzida','True'),
+('Regular','True'),
+('Obeso''True'),
+('Regular','True'),
+('Regular','True'),
+('Obeso','True'),
+('Obeso','False'),
+('Obeso','True');
+`
+
 
 /**
  * Function que aplica a criação das tabelas
