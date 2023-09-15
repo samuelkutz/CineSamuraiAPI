@@ -116,27 +116,46 @@ VALUES
 ('De Volta para o Futuro','Inglês','Livre','80 minutos'),
 ('A Lista de Schindler','Inglês','14','90 minutos'),
 ('Toy Story','Inglês','Livre','120 minutos'),
-('Matrix','Inglês','16','80 minutos'),
+('Matrix','Inglês','16','80 minutos');
 `
 const ADD_PRECOS_DATA =`
 INSERT INTO preços (dia_semana, valor) 
 VALUES
 ('segundafeira','12,00'),
-('quintafeira','18,00')
-('terçafeira','15,00')
-('sextafeira','24,00')
-('quartafeira','15,00')
-('terçafeira','15,00')
-('quintafeira','18,00')
-('quartafeira','15,00')
-('sextafeira','24,00')
-('quintafeira','18,00')
-('terçafeira','15,00')
-('quartafeira','15,00')
-('segundafeira','12,00')
-('sextafeira','24,00')
-('quintafeira','18,00')
+('quintafeira','18,00'),
+('terçafeira','15,00'),
+('sextafeira','24,00'),
+('quartafeira','15,00'),
+('terçafeira','15,00'),
+('quintafeira','18,00'),
+('quartafeira','15,00'),
+('sextafeira','24,00'),
+('quintafeira','18,00'),
+('terçafeira','15,00'),
+('quartafeira','15,00'),
+('segundafeira','12,00'),
+('sextafeira','24,00'),
+('quintafeira','18,00');
 `
+const ADD_PROGRAMACAO_GERAL_DATA =`
+INSERT INTO programacao_geral (id_filme_fk, data_horario,tipo_linguagem)
+VALUES
+(1,'2023-09-10 13:00','comédia'),
+(2,2023-05-10 19:00','drama'),
+(3,'2023-07-10 20:00','ficção científica'),
+(4,'2023-04-10 11:00','animação'),
+(5,'2023-02-10 14:00','terror'),
+(6,'2023-09-10 17:00','Ação'),
+(7,'2023-08-10 21:00','documentário'),
+(8,'2023-10-10 23:00','aventura'),
+(9,'2023-01-10 22:00','suspense'),
+(10,'2023-02-10 18:00','comédia'),
+(11,'2023-05-10 19:00','romance'),
+(12,'2023-02-10 15:00','animação'),
+(13,'2023-08-10 12:00','comédia'),
+(14,'2023-07-10 14:00','animação'),
+(15,'2023-04-10 13:00','Ação');
+`    
 
 /**
  * Function que aplica a criação das tabelas
