@@ -1,4 +1,4 @@
-class EnderecoModel{
+class FilmesModel{
     // @param {string} = nome_filme
     // @param {string} = linguagem_original
     // @param {string} = classificacao_indicativa
@@ -11,3 +11,6 @@ class EnderecoModel{
     this.duracao = duracao
     }
     }
+
+    
+export default FilmesModel
