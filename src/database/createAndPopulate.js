@@ -437,6 +437,17 @@ function populaTabelaPoltrona() {
     });
 }
 
+function populaTabelaSessao() {
+    Database.run(ADD_SESSAO_DATA, (error) => {
+        if (error) {
+            console.log("Erro ao popular tabela Sessão")
+        }
+        else {
+            console.log("Tabela Sessão populada com sucesso!")
+        }
+    });
+}
+
 /**
  * Roda as funções de criação de tabela e população em serie (Uma após a outra)
  */
