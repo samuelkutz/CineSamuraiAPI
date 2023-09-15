@@ -337,6 +337,16 @@ function criaTabelaPoltrona() {
     });
 }
 
+function criaTabelaSessao() {
+    Database.run(SESSAO_TABLE, (error) => {
+        if (error) {
+            console.log("Erro ao criar tabela Sessão")
+        } else {
+            console.log("Tabela Sessão criada com sucesso!")
+        }
+    });
+}
+
 /**
  * Function que polula via SQLite as tabelas
  */
