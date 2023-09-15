@@ -59,7 +59,14 @@ CREATE TABLE IF NOT EXISTS "sala" (
   "capacidade" INTEGER,
   "nome_sala" varchar(100) NOT NULL
 );
-
+`
+const POLTRONA_TABLE = `
+CREATE TABLE IF NOT EXISTS "poltrona" (
+  "id_poltrona" int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  "tipo_poltrona" varchar(20) NOT NULL,
+  "disponibilidade" boolean
+);
+`
 
 /** 
  * script de inserção de dados base (seria os usuarios ja cadastrados / o DAO ira permitir q a infor
