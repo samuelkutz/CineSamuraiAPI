@@ -28,6 +28,17 @@ CREATE TABLE IF NOT EXISTS "endereco" (
     "cep" varchar(8) NOT NULL
   );
 `
+const FILMES_TABLE = `
+CREATE TABLE IF NOT EXISTS "filmes" (
+    "id_filme" INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    "nome_filme" varchar(255) NOT NULL,
+    "linguagem_originaL" varchar(100) NOT NULL,
+    "classificacao_indicativa" varchar(3) NOT NULL,
+    "duracao" varchar(10) NOT NULL
+  );
+`
+
+
 
 /** 
  * script de inserção de dados base (seria os usuarios ja cadastrados / o DAO ira permitir q a infor
