@@ -99,6 +99,26 @@ VALUES
     ('Rua K', '78', 'casa3', 'Goiânia', 'GO', '01234-567'),
     ('Av. L', '89', 'casa6', 'Florianópolis', 'SC', '12345-678');
 `
+const ADD_FILMES_DATA = `
+INSERT INTO filmes (nome_filme, linguagem_original, classificacao_indicativa, duração)
+VALUES
+('Vingadores: Ultimato','Portugues','14','90 minutos'),
+('O Poderoso Chefão', 'EUA', 'Portugues','16','120 minutos'),
+('Parasita','Portugues','16 ano','90 minutos'),
+('Interestelar','Portugues', '12','80 minutos'),
+('Pulp Fiction','Inglês','18','90 minutos'),
+('A Origem','Portugues', '14','120 minutos'),
+('Cidade de Deus','Portugues','18','80 minutos'),
+('Clube da Luta','Inglês','18','120 minutos'),
+('O Senhor dos Anéis: O Retorno do Rei','Portugues','12','80 minutos'),
+('Coringa','Inglês','16 anos','120 minutos'),
+('O Pianista','Francês','16','120 minutos'),
+('De Volta para o Futuro','Inglês','Livre','80 minutos'),
+('A Lista de Schindler','Inglês','14','90 minutos'),
+('Toy Story','Inglês','Livre','120 minutos'),
+('Matrix','Inglês','16','80 minutos'),
+
+`
 
 /**
  * Function que aplica a criação das tabelas
