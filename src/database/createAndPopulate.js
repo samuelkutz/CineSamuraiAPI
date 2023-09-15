@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS "cadastro_usuarios" (
     "sobrenome" varchar(255) NOT NULL,
     "email_cadastro" varchar(100) NOT NULL,
     "cpf" varchar(11) NOT NULL,
-    "senha_cadastro" varchar(12) NOT NULL,
+    "senha_cadastro" varchar(8) NOT NULL,
     "telefone" varchar(11) NOT NULL,
     "id_endereco_fk" INTEGER
   );
@@ -29,16 +29,29 @@ CREATE TABLE IF NOT EXISTS "endereco" (
   );
 `
 
-/**
+/** 
  * script de inserção de dados base (seria os usuarios ja cadastrados / o DAO ira permitir q a infor
  * mação passada pelo usuario seja inserida no bd automaticamente)
  */
 const ADD_CADASTRO_USUARIOS_DATA = `
 INSERT INTO cadastro_usuarios (nome_usuario, sobrenome, email_cadastro, cpf, senha_cadastro, telefone)
 VALUES 
-    ('João', 'Silva', 'joao.silva@gmail.com', '01256685202', '123456789121', '11123456781'),
-    ('Maria', 'Santos', 'maria.santos@hotmail.com', '12663358995', '125687496351', '21987654321'),
-    ('Pedro', 'Oliveira', 'pedro.oliveira@yahoo.com.br', '45669985636', '31456789011');
+    ('João', 'Silva', 'joao.silva@gmail.com', '01256685202', '12345678', '11123456781'),
+    ('Maria', 'Santos', 'maria.santos@hotmail.com', '12663358995', '12568749', '21987654321'),
+    ('Pedro', 'Oliveira', 'pedro.oliveira@yahoo.com.br', '45669985636', '31456786','8189012345'),
+    ('Ana','Pereira','ana.sousa@yahoo.com.br','36931176080','23456789','6123456789'),
+    ('Renata','Ferreira','renata.ferreira@yahoo.com.br','23309887022','12345678','2789012345'),
+    ('Camila','Lima','carolina.oliveira@yahoo.com.br','92300528096','23456789','6123456789'),
+    ('Guilherme','Ribeiro','guilherme.ribeiro@hotmail.com','27883522043','54678923','8556789012'),
+    ('Pedro','Rocha','pedro.rocha@gmail.com','85688225092','54678923','9690123456'),
+    ('Marcela','Fernandes','marcela.fernandes@gmail.com','03880758050','34567834','9834567890'),
+    ('Rafael','Barbosa','rafael.barbosa@gmail.com','09381192065','23456789','9690123456'),
+    ('Igor','Castro','igor.castro@hotmail.com','02869579063','23657891','6590123456'),
+    ('Marcelo','Santos','marcelo.santos@gmail.com','20882342096','43568790','1956789012'),
+    ('Beatriz','Almeida','beatriz.almeida@yahoo.com.br','33286997080','34567892','2489012345'),
+    ('Letícia','Costa','leticia.costa@hotmail.com','09381192065','12547635','7923456789'),
+    ('Karina','Santos','karina.santos@hotmail.com','42593909021','45672345','8556789012');
+    
 `
 
 const ADD_ENDERECO_DATA = `
@@ -46,7 +59,19 @@ INSERT INTO endereco (logradouro, numero, complemento, cidade, uf, cep)
 VALUES
     ('Rua Principal', '42', 'Apto 101', 'São Paulo', 'SP', '01234567'),
     ('Avenida Secundária', '18', 'Casa', 'Rio de Janeiro', 'RJ', '20000123'),
-    ('Estrada Distante', '7', 'Sala 3B', 'Belo Horizonte', 'MG', '30005678');
+    ('Estrada Distante', '7', 'Sala 3B', 'Belo Horizonte', 'MG', '30005678'),
+    ('Rua A', '3', 'casa2', 'São Paulo', 'SP', '01234-567'),
+    ('Av. B','45','casa3', Rio de Janeiro, 'RJ', '12345-678'),
+    ('Rua C','54','ap', 'Belo Horizonte', 'MG', '23456-789'),
+    ('Av. D', '23', 'casa1', 'Porto Alegre', 'RS', '34567-890'),
+    ('Rua E', '12', 'casa2', 'Salvador', 'BA', '45678-901'),
+    ('Av. F', '46', 'casa2', 'Curitiba', 'PR', '56789-012'),
+    ('Rua G', '98', 'casa5', 'Manaus', 'AM', '67890-123'),
+    ('Av. H', '34, 'casa1', 'Recife', 'PE', '78901-234'),
+    ('Rua I','56','casa4', 'Brasília', 'DF', '89012-345'),
+    ('Av. J', '65', 'casa7', 'Fortaleza', 'CE', '90123-456'),
+    ('Rua K', '78', 'casa3', 'Goiânia', 'GO', '01234-567'),
+    ('Av. L', '89', 'casa6', 'Florianópolis', 'SC', '12345-678');
 `
 
 /**
