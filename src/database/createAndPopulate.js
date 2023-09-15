@@ -317,6 +317,16 @@ function criaTabelaProgramacaoGeral() {
     });
 }
 
+function criaTabelaSala() {
+    Database.run(SALA_TABLE, (error) => {
+        if (error) {
+            console.log("Erro ao criar tabela Sala")
+        } else {
+            console.log("Tabela Sala criada com sucesso!")
+        }
+    });
+}
+
 /**
  * Function que polula via SQLite as tabelas
  */
