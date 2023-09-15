@@ -53,6 +53,12 @@ CREATE TABLE IF NOT EXISTS "programacao_geral" (
     "id_preco_fk" int
   );
 `
+const SALA_TABLE = `
+CREATE TABLE IF NOT EXISTS "sala" (
+  "id_sala" INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  "capacidade" INTEGER,
+  "nome_sala" varchar(100) NOT NULL
+);
 
 
 /** 
@@ -118,7 +124,7 @@ VALUES
 ('Toy Story','Inglês','Livre','120 minutos'),
 ('Matrix','Inglês','16','80 minutos');
 `
-const ADD_PRECO_DATA =`
+const ADD_PRECO_DATA = `
 INSERT INTO preços (dia_semana, valor) 
 VALUES
 ('segundafeira','12,00'),
@@ -137,7 +143,7 @@ VALUES
 ('sextafeira','24,00'),
 ('quintafeira','18,00');
 `
-const ADD_PROGRAMACAO_GERAL_DATA =`
+const ADD_PROGRAMACAO_GERAL_DATA = `
 INSERT INTO programacao_geral (id_filme_fk, data_horario,tipo_linguagem)
 VALUES
 (1,'2023-09-10 13:00','comédia'),
@@ -155,14 +161,14 @@ VALUES
 (13,'2023-08-10 12:00','comédia'),
 (14,'2023-07-10 14:00','animação'),
 (15,'2023-04-10 13:00','Ação');
-`    
+`
 
 /**
  * Function que aplica a criação das tabelas
  */
 function criaTabelaCadastroUsuarios() {
-    Database.run(CADASTRO_USUARIOS_TABLE, (error)=> {
-       if (error) {
+    Database.run(CADASTRO_USUARIOS_TABLE, (error) => {
+        if (error) {
             console.log("Erro ao criar tabela de Cadastro Usuários")
         } else {
             console.log("Tabela Cadastro Usuários criada com sucesso!")
@@ -170,19 +176,19 @@ function criaTabelaCadastroUsuarios() {
     });
 }
 
-function criaTabelaEndereco(){
-    Database.run(ENDERECO_TABLE, (error)=> {
+function criaTabelaEndereco() {
+    Database.run(ENDERECO_TABLE, (error) => {
         if (error) {
-             console.log("Erro ao criar tabela de Endereço")
-         } else {
-             console.log("Tabela Endereço criada com sucesso!")
-         }
-     });
+            console.log("Erro ao criar tabela de Endereço")
+        } else {
+            console.log("Tabela Endereço criada com sucesso!")
+        }
+    });
 }
 
 function criaTabelaFilmes() {
-    Database.run(FILMES_TABLE, (error)=> {
-       if (error) {
+    Database.run(FILMES_TABLE, (error) => {
+        if (error) {
             console.log("Erro ao criar tabela de Filmes")
         } else {
             console.log("Tabela Filmes criada com sucesso!")
@@ -190,33 +196,33 @@ function criaTabelaFilmes() {
     });
 }
 
-function criaTabelaPreco(){
-    Database.run(PRECO_TABLE, (error)=> {
+function criaTabelaPreco() {
+    Database.run(PRECO_TABLE, (error) => {
         if (error) {
-             console.log("Erro ao criar tabela de Preço")
-         } else {
-             console.log("Tabela Preço criada com sucesso!")
-         }
-     });
+            console.log("Erro ao criar tabela de Preço")
+        } else {
+            console.log("Tabela Preço criada com sucesso!")
+        }
+    });
 }
 
-function criaTabelaProgramacaoGeral(){
-    Database.run(PROGRAMACAO_GERAL_TABLE, (error)=> {
+function criaTabelaProgramacaoGeral() {
+    Database.run(PROGRAMACAO_GERAL_TABLE, (error) => {
         if (error) {
-             console.log("Erro ao criar tabela de Programação Geral")
-         } else {
-             console.log("Tabela Programação Geral criada com sucesso!")
-         }
-     });
+            console.log("Erro ao criar tabela de Programação Geral")
+        } else {
+            console.log("Tabela Programação Geral criada com sucesso!")
+        }
+    });
 }
 
 /**
  * Function que polula via SQLite as tabelas
  */
 function populaTabelaCadastroUsuarios() {
-    Database.run(ADD_CADASTRO_USUARIOS_DATA, (error)=> {
-       if (error) {
-        console.log("Erro ao popular tabela de Cadastro Usuários")
+    Database.run(ADD_CADASTRO_USUARIOS_DATA, (error) => {
+        if (error) {
+            console.log("Erro ao popular tabela de Cadastro Usuários")
         }
         else {
             console.log("Tabela Cadastro Usuários populada com sucesso!")
@@ -225,9 +231,9 @@ function populaTabelaCadastroUsuarios() {
 }
 
 function populaTabelaEndereco() {
-    Database.run(ADD_ENDERECO_DATA, (error)=> {
-       if (error) {
-        console.log("Erro ao popular tabela de Endereço")
+    Database.run(ADD_ENDERECO_DATA, (error) => {
+        if (error) {
+            console.log("Erro ao popular tabela de Endereço")
         }
         else {
             console.log("Tabela Endereço populada com sucesso!")
@@ -236,9 +242,9 @@ function populaTabelaEndereco() {
 }
 
 function populaTabelaFilmes() {
-    Database.run(ADD_FILMES_DATA, (error)=> {
-       if (error) {
-        console.log("Erro ao popular tabela de Filmes")
+    Database.run(ADD_FILMES_DATA, (error) => {
+        if (error) {
+            console.log("Erro ao popular tabela de Filmes")
         }
         else {
             console.log("Tabela Filmes populada com sucesso!")
@@ -247,9 +253,9 @@ function populaTabelaFilmes() {
 }
 
 function populaTabelaPreco() {
-    Database.run(ADD_PRECO_DATA, (error)=> {
-       if (error) {
-        console.log("Erro ao popular tabela de Preço")
+    Database.run(ADD_PRECO_DATA, (error) => {
+        if (error) {
+            console.log("Erro ao popular tabela de Preço")
         }
         else {
             console.log("Tabela Preço populada com sucesso!")
@@ -258,9 +264,9 @@ function populaTabelaPreco() {
 }
 
 function populaTabelaProgramacaoGeral() {
-    Database.run(ADD_PROGRAMACAO_GERAL_DATA, (error)=> {
-       if (error) {
-        console.log("Erro ao popular tabela de Programação Geral")
+    Database.run(ADD_PROGRAMACAO_GERAL_DATA, (error) => {
+        if (error) {
+            console.log("Erro ao popular tabela de Programação Geral")
         }
         else {
             console.log("Tabela Programação Geral populada com sucesso!")
@@ -272,7 +278,7 @@ function populaTabelaProgramacaoGeral() {
 /**
  * Roda as funções de criação de tabela e população em serie (Uma após a outra)
  */
-Database.serialize(()=>{
+Database.serialize(() => {
     criaTabelaCadastroUsuarios();
     criaTabelaEndereco();
     criaTabelaFilmes();
