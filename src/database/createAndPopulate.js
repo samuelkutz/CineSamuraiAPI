@@ -203,7 +203,8 @@ VALUES
 (60,'Cinemark XD'); 
 `
 const ADD_POLTRONA_DATA = `
-INSERT INTO poltrona (tipo_poltrona,disponibilidade) VALUES 
+INSERT INTO poltrona (tipo_poltrona,disponibilidade)
+VALUES 
 ('Obeso','True'),
 ('Cadeirante','True'),
 ('Mobilidade reduzida','True'),
@@ -220,7 +221,25 @@ INSERT INTO poltrona (tipo_poltrona,disponibilidade) VALUES
 ('Obeso','False'),
 ('Obeso','True');
 `
-
+const ADD_SESSAO_DATA= `
+INSERT INTO sessao (id_filme_fk, tipo_sessao, id_programacao_geral_fk, sala_fk, id_poltrona_fk)
+VALUES 
+(1,'4D',1,1,1),
+(2,'3D',2,2,3),
+(3,'VIP',3,3,2),
+(4,'3D',1,2,2),
+(5,'2D',3,3,4),
+(6,'3D',3,4,5),
+(7,'4D',2,3,5),
+(8,'VIP',3,3,6),
+(9,'4D',2,2,4),
+(10,'2D',1,2,3),
+(11,'3D',6,7,8),
+(12,'4D',4,2,2),
+(13,'VIP',5,6,7),
+(14,'4D',2,2,3),
+(15,'2D',3,4,5);
+`
 
 /**
  * Function que aplica a criação das tabelas
