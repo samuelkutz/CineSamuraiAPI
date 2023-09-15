@@ -67,7 +67,16 @@ CREATE TABLE IF NOT EXISTS "poltrona" (
   "disponibilidade" boolean
 );
 `
-
+const SESSAO_TABLE = `
+CREATE TABLE IF NOT EXISTS "sessao" (
+  "id_sessao" int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  "id_filme_fk" INTEGER,
+  "tipo_sessao" varchar(5) NOT NULL,
+  "id_programacao_geral_fk" INTEGER,
+  "sala_fk" INTEGER,
+  "id_poltrona_fk" INTEGER
+);
+`
 /** 
  * script de inserção de dados base (seria os usuarios ja cadastrados / o DAO ira permitir q a infor
  * mação passada pelo usuario seja inserida no bd automaticamente)
