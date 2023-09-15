@@ -415,6 +415,16 @@ function populaTabelaProgramacaoGeral() {
     });
 }
 
+function populaTabelaSala() {
+    Database.run(ADD_SALA_DATA, (error) => {
+        if (error) {
+            console.log("Erro ao popular tabela Sala")
+        }
+        else {
+            console.log("Tabela Sala populada com sucesso!")
+        }
+    });
+}
 
 /**
  * Roda as funções de criação de tabela e população em serie (Uma após a outra)
