@@ -37,7 +37,13 @@ CREATE TABLE IF NOT EXISTS "filmes" (
     "duracao" varchar(10) NOT NULL
   );
 `
-
+const PRECO_TABLE = `
+CREATE TABLE IF NOT EXISTS "preco" (
+    "id_preco" INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    "dia_semana" varchar(3) NOT NULL,
+    "valor" float 
+  );
+`
 
 
 /** 
