@@ -44,6 +44,15 @@ CREATE TABLE IF NOT EXISTS "preco" (
     "valor" float 
   );
 `
+const PROGRAMACAO_GERAL_TABLE = `
+CREATE TABLE IF NOT EXISTS "programacao_geral" (
+    "id_pogramacao" int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    "id_filme_fk" int,
+    "data_horario" datetime,
+    "tipo_linguagem" char,
+    "id_preco_fk" int
+  );
+`
 
 
 /** 
