@@ -5,7 +5,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node ./app.js"
+    "start": "node ./app.js",
+    "database": "node ./src/database/createAndPopulate.js",
+    "build": "npm run database && start"
   },
   "author": "",
   "license": "MIT",
