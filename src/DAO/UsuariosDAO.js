@@ -13,17 +13,33 @@ class UsuariosDAO extends DAO{
         const query = `
         INSERT INTO cadastro_usuarios (nome_usuario, sobrenome, email_cadastro, cpf, senha_cadastro, telefone) VALUES (?,?,?,?,?,?)
         `
-        const result = await this.inserir(query, dataValues)
-        return result
+        const resultado = await this.inserir(query, dataValues)
+        return resultado
     }
 
     /**
      * Método de busca de registros específicos na tabela Cadastro Usuários através de um identificador
      * @param {string} id 
-     * @returns {UsuariosModel}
+     * @returns 
      */
     static buscarUsuarioPorId(id){
         return this.buscarPorId(CADASTRO_USUARIOS_TABLE, id)
+    }
+
+    /** 
+     * @param {string} email 
+     * @returns 
+     */
+    static buscarEmailUsuario(email){
+        return this.buscarDado(CADASTRO_USUARIOS_TABLE, email)
+    }
+
+    /**
+     * @param {string} senha 
+     * @returns 
+     */
+    static buscarSenhaUsuario(senha){
+        return this.buscarDado(CADASTRO_USUARIOS_TABLE, senha)
     }
 
     /**
