@@ -49,6 +49,16 @@ class DAO{
     }
 
     /**
+     * Método de busca de dados específicos através do próprio dado
+     * @param {string} entidade 
+     * @param {string} dado 
+     * @returns 
+     */
+    static buscarDado(entidade, dado){
+        return Database[entidade][dado]
+    }
+
+    /**
      * Método de deleção de dados específicos através de um identificador
      * @param {string} entidade 
      * @param {string} id 
