@@ -17,6 +17,10 @@
 <h1>🔧 Instalação </h1>
 <p></p>
 
+<h1>🔧 Bibliotecas Utilizadas </h1>
+<p>cpf-cnpj-validator -> Utilizada para realizar a validação do CPF inserido. </p>
+(Documentação)[https://www.npmjs.com/package/cpf-cnpj-validator]
+
 
 <h1>⚙️ Executando os testes</h1>
 <p></p>
