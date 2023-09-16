@@ -1,9 +1,10 @@
 class IngressoModel {
+    /** 
+     * @param {boolean} tipo_ingresso 
+     */
 
-    // @param { string } = tipo_ingresso
-
-    construtor(tipo_ingresso) {
-        isso.tipo_ingresso = tipo_ingresso
+    constructor(tipo_ingresso) {
+        this.tipo_ingresso = tipo_ingresso
     }
 }
 

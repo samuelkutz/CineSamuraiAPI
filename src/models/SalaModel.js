@@ -1,11 +1,13 @@
 class SalaModel {
 
-    // @param { string } = capacidadel
-    // @param { string } = nome_sala
+    /**
+     * @param {number} capacidade
+     * @param {string} nome_sala 
+     */
 
-    constructor(capacidadel, nome_sala) {
-        isso.capacidadel = capacidadel
-        isso.nome_sala = nome_sala
+    constructor(capacidade, nome_sala) {
+        this.capacidade = capacidade
+        this.nome_sala = nome_sala
     }
 }
 

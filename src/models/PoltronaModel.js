@@ -1,11 +1,12 @@
 class PoltronaModel {
+    /**
+     * @param {string} tipo_poltrona 
+     * @param {boolean} disponibilidade 
+     */
 
-    // @param { string } = tipo_poltrona
-    // @param { string } = disponibilidade
-
-    construtor(tipo_poltrona, disponibilidade) {
-        isso.tipo_poltrona = tipo_poltrona
-        isso.disponibilidade = disponibilidade
+    constructor(tipo_poltrona, disponibilidade) {
+        this.tipo_poltrona = tipo_poltrona
+        this.disponibilidade = disponibilidade
     }
 }
 

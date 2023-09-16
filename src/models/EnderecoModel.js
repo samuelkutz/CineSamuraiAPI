@@ -4,7 +4,6 @@
 
 class EnderecoModel{
    /**
-    * 
     * @param {string} logradouro 
     * @param {string} numero 
     * @param {string} complemento 
