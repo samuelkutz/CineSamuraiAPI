@@ -7,13 +7,9 @@ class ValidacaoServices{
      * @param {string} id 
      * @returns {boolean}
      */
-    static validarExistencia(id){
+    static validarExistenciaPorId(id){
         const usuario = UsuariosDAO.buscarUsuarioPorId(id)
-        if(usuario){
-            return true
-        } else {
-            return false
-        }
+        return usuario
     }
 
     /**
@@ -27,6 +23,16 @@ class ValidacaoServices{
     }
     static validaSobrenome(sobrenome){
         return typeof sobrenome == "string" && sobrenome.length > 2
+    }
+
+    /**
+     * 
+     * @param {String} email 
+     * @returns {boolean}
+     */
+    static validarExistenciaEmail(email){
+        const emailExistente = UsuariosDAO.buscarEmailUsuario(email)
+        return emailExistente
     }
 
     /**
@@ -46,6 +52,16 @@ class ValidacaoServices{
      */
     static validaCPF(numCPF){
         return cpf.isValid(numCPF)
+    }
+
+    /**
+     * 
+     * @param {string} senha 
+     * @returns {boolean}
+     */
+    static validarExistenciaSenha(senha){
+        const senhaExistente = UsuariosDAO.buscarSenhaUsuario(senha)
+        return senha 
     }
 
     /**
