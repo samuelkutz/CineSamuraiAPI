@@ -1,4 +1,5 @@
 import UsuariosDAO from "../DAO/UsuariosDAO.js";
+import {cpf} from "cpf-cnpj-validator"
 
 class ValidacaoServices{
     /**
@@ -43,8 +44,8 @@ class ValidacaoServices{
      * @param {string}  
      * @returns {boolean}
      */
-    static validaCPF(){
-        
+    static validaCPF(numCPF){
+        return cpf.isValid(numCPF)
     }
 
     /**
@@ -53,7 +54,7 @@ class ValidacaoServices{
      * @returns {boolean}
      */
     static validaSenha(senha){
-        
+        return senha.length > 5 && senha.length <= 11 
     }
 
     /**
@@ -71,15 +72,15 @@ class ValidacaoServices{
      * @param {string} nome 
      * @param {string} sobrenome 
      * @param {string} email 
-     * @param {string} cpf 
+     * @param {string} numCPF 
      * @param {string} senha 
      * @param {string} telefone 
      * @returns 
      */
-    static validaCamposUsuario(nome, sobrenome, email, cpf, senha, telefone){
-        const isValid = this.validaNome(nome) && this.validaSobrenome(sobrenome) && this.validaEmail(email) && this.validaCPF(cpf) 
+    static validaCamposUsuario(nome, sobrenome, email, numCPF, senha, telefone){
+        const ehValido = this.validaNome(nome) && this.validaSobrenome(sobrenome) && this.validaEmail(email) && this.validaCPF(numCPF) 
         && this.validaSenha(senha) && this.validaTelefone(telefone)
-        return isValid
+        return ehValido
     }
 }
 
