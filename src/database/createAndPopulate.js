@@ -134,135 +134,135 @@ VALUES
 const ADD_FILMES_DATA = `
 INSERT INTO filmes (nome_filme, linguagem_original, classificacao_indicativa, duração)
 VALUES
-('Vingadores: Ultimato','Portugues','14','90 minutos'),
-('O Poderoso Chefão', 'EUA', 'Portugues','16','120 minutos'),
-('Parasita','Portugues','16 ano','90 minutos'),
-('Interestelar','Portugues', '12','80 minutos'),
-('Pulp Fiction','Inglês','18','90 minutos'),
-('A Origem','Portugues', '14','120 minutos'),
-('Cidade de Deus','Portugues','18','80 minutos'),
-('Clube da Luta','Inglês','18','120 minutos'),
-('O Senhor dos Anéis: O Retorno do Rei','Portugues','12','80 minutos'),
-('Coringa','Inglês','16 anos','120 minutos'),
-('O Pianista','Francês','16','120 minutos'),
-('De Volta para o Futuro','Inglês','Livre','80 minutos'),
-('A Lista de Schindler','Inglês','14','90 minutos'),
-('Toy Story','Inglês','Livre','120 minutos'),
-('Matrix','Inglês','16','80 minutos');
+    ('Vingadores: Ultimato','Portugues','14','90 minutos'),
+    ('O Poderoso Chefão', 'EUA', 'Portugues','16','120 minutos'),
+    ('Parasita','Portugues','16 ano','90 minutos'),
+    ('Interestelar','Portugues', '12','80 minutos'),
+    ('Pulp Fiction','Inglês','18','90 minutos'),
+    ('A Origem','Portugues', '14','120 minutos'),
+    ('Cidade de Deus','Portugues','18','80 minutos'),
+    ('Clube da Luta','Inglês','18','120 minutos'),
+    ('O Senhor dos Anéis: O Retorno do Rei','Portugues','12','80 minutos'),
+    ('Coringa','Inglês','16 anos','120 minutos'),
+    ('O Pianista','Francês','16','120 minutos'),
+    ('De Volta para o Futuro','Inglês','Livre','80 minutos'),
+    ('A Lista de Schindler','Inglês','14','90 minutos'),
+    ('Toy Story','Inglês','Livre','120 minutos'),
+    ('Matrix','Inglês','16','80 minutos');
 `
 const ADD_PRECO_DATA = `
 INSERT INTO preços (dia_semana, valor) 
 VALUES
-('segundafeira','12,00'),
-('quintafeira','18,00'),
-('terçafeira','15,00'),
-('sextafeira','24,00'),
-('quartafeira','15,00'),
-('terçafeira','15,00'),
-('quintafeira','18,00'),
-('quartafeira','15,00'),
-('sextafeira','24,00'),
-('quintafeira','18,00'),
-('terçafeira','15,00'),
-('quartafeira','15,00'),
-('segundafeira','12,00'),
-('sextafeira','24,00'),
-('quintafeira','18,00');
+    ('segundafeira','12,00'),
+    ('quintafeira','18,00'),
+    ('terçafeira','15,00'),
+    ('sextafeira','24,00'),
+    ('quartafeira','15,00'),
+    ('terçafeira','15,00'),
+    ('quintafeira','18,00'),
+    ('quartafeira','15,00'),
+    ('sextafeira','24,00'),
+    ('quintafeira','18,00'),
+    ('terçafeira','15,00'),
+    ('quartafeira','15,00'),
+    ('segundafeira','12,00'),
+    ('sextafeira','24,00'),
+    ('quintafeira','18,00');
 `
 const ADD_PROGRAMACAO_GERAL_DATA = `
 INSERT INTO programacao_geral (id_filme_fk, data_horario,tipo_linguagem)
 VALUES
-(1,'2023-09-10 13:00','comédia'),
-(2,2023-05-10 19:00','drama'),
-(3,'2023-07-10 20:00','ficção científica'),
-(4,'2023-04-10 11:00','animação'),
-(5,'2023-02-10 14:00','terror'),
-(6,'2023-09-10 17:00','Ação'),
-(7,'2023-08-10 21:00','documentário'),
-(8,'2023-10-10 23:00','aventura'),
-(9,'2023-01-10 22:00','suspense'),
-(10,'2023-02-10 18:00','comédia'),
-(11,'2023-05-10 19:00','romance'),
-(12,'2023-02-10 15:00','animação'),
-(13,'2023-08-10 12:00','comédia'),
-(14,'2023-07-10 14:00','animação'),
-(15,'2023-04-10 13:00','Ação');
+    (1,'2023-09-10 13:00','comédia'),
+    (2,2023-05-10 19:00','drama'),
+    (3,'2023-07-10 20:00','ficção científica'),
+    (4,'2023-04-10 11:00','animação'),
+    (5,'2023-02-10 14:00','terror'),
+    (6,'2023-09-10 17:00','Ação'),
+    (7,'2023-08-10 21:00','documentário'),
+    (8,'2023-10-10 23:00','aventura'),
+    (9,'2023-01-10 22:00','suspense'),
+    (10,'2023-02-10 18:00','comédia'),
+    (11,'2023-05-10 19:00','romance'),
+    (12,'2023-02-10 15:00','animação'),
+    (13,'2023-08-10 12:00','comédia'),
+    (14,'2023-07-10 14:00','animação'),
+    (15,'2023-04-10 13:00','Ação');
 `
 const ADD_SALA_DATA = `
 INSERT INTO sala (capacidade, nome_sala)
 VALUES 
-(70,'Cinepolis'),
-(38,'UCI Cinemas'),
-(20,'Kinoplex'),
-(40,'Cinemark'),
-(30,'Moviecom'),
-(35,'Cineart'),
-(45,'Cinépolis Macro'),
-(15,'Cinesystem'),
-(55,'Cinépolis IMAX.'),
-(60,'Cinemark XD'); 
+    (70,'Cinepolis'),
+    (38,'UCI Cinemas'),
+    (20,'Kinoplex'),
+    (40,'Cinemark'),
+    (30,'Moviecom'),
+    (35,'Cineart'),
+    (45,'Cinépolis Macro'),
+    (15,'Cinesystem'),
+    (55,'Cinépolis IMAX.'),
+    (60,'Cinemark XD'); 
 `
 const ADD_POLTRONA_DATA = `
 INSERT INTO poltrona (tipo_poltrona,disponibilidade)
 VALUES 
-('Obeso','True'),
-('Cadeirante','True'),
-('Mobilidade reduzida','True'),
-('Acompanhante','False'),
-('Regular','True'),
-('Mobilidade reduzida','True'),
-('Obeso','False'),
-('Mobilidade reduzida','True'),
-('Regular','True'),
-('Obeso''True'),
-('Regular','True'),
-('Regular','True'),
-('Obeso','True'),
-('Obeso','False'),
-('Obeso','True');
+    ('Obeso','True'),
+    ('Cadeirante','True'),
+    ('Mobilidade reduzida','True'),
+    ('Acompanhante','False'),
+    ('Regular','True'),
+    ('Mobilidade reduzida','True'),
+    ('Obeso','False'),
+    ('Mobilidade reduzida','True'),
+    ('Regular','True'),
+    ('Obeso''True'),
+    ('Regular','True'),
+    ('Regular','True'),
+    ('Obeso','True'),
+    ('Obeso','False'),
+    ('Obeso','True');
 `
-const ADD_SESSAO_DATA= `
+const ADD_SESSAO_DATA = `
 INSERT INTO sessao (id_filme_fk, tipo_sessao, id_programacao_geral_fk, sala_fk, id_poltrona_fk)
 VALUES 
-(1,'4D',1,1,1),
-(2,'3D',2,2,3),
-(3,'VIP',3,3,2),
-(4,'3D',1,2,2),
-(5,'2D',3,3,4),
-(6,'3D',3,4,5),
-(7,'4D',2,3,5),
-(8,'VIP',3,3,6),
-(9,'4D',2,2,4),
-(10,'2D',1,2,3),
-(11,'3D',6,7,8),
-(12,'4D',4,2,2),
-(13,'VIP',5,6,7),
-(14,'4D',2,2,3),
-(15,'2D',3,4,5);
+    (1,'4D',1,1,1),
+    (2,'3D',2,2,3),
+    (3,'VIP',3,3,2),
+    (4,'3D',1,2,2),
+    (5,'2D',3,3,4),
+    (6,'3D',3,4,5),
+    (7,'4D',2,3,5),
+    (8,'VIP',3,3,6),
+    (9,'4D',2,2,4),
+    (10,'2D',1,2,3),
+    (11,'3D',6,7,8),
+    (12,'4D',4,2,2),
+    (13,'VIP',5,6,7),
+    (14,'4D',2,2,3),
+    (15,'2D',3,4,5);
 `
-const ADD_INGRESSO_DATA= `
+const ADD_INGRESSO_DATA = `
 INSERT INTO ingresso (tipo_ingresso, id_preco_fk, id_sessao_fk, id_usuario_fk)
 VALUES 
-('True',1,3,1),
-('False',2,2,3),
-('True',2,3,3),
-('False'4,3,2),
-('True'5,3,4),
-('False'6,3,5),
-('True'7,8,9),
-('False'8,9,4),
-('True'9,2,4),
-('False'10,1,4),
-('True'11,2,4),
-('False'12,8,7),
-('True'13,4,3),
-('False'14,5,3),
-('True'15,1,3),
-('False'16,5,3),
-('True'17,1,7),
-('False'18,5,3),
-('True'19,5,3),
-('False'20,1,3);
+    ('True',1,3,1),
+    ('False',2,2,3),
+    ('True',2,3,3),
+    ('False'4,3,2),
+    ('True'5,3,4),
+    ('False'6,3,5),
+    ('True'7,8,9),
+    ('False'8,9,4),
+    ('True'9,2,4),
+    ('False'10,1,4),
+    ('True'11,2,4),
+    ('False'12,8,7),
+    ('True'13,4,3),
+    ('False'14,5,3),
+    ('True'15,1,3),
+    ('False'16,5,3),
+    ('True'17,1,7),
+    ('False'18,5,3),
+    ('True'19,5,3),
+    ('False'20,1,3);
 `
 /**
  * Function que aplica a criação das tabelas
@@ -457,7 +457,7 @@ function populaTabelaIngresso() {
             console.log("Tabela Ingresso populada com sucesso!")
         }
     });
-} 
+}
 /**
  * Roda as funções de criação de tabela e população em serie (Uma após a outra)
  */
