@@ -2,16 +2,6 @@ import UsuariosModel from "../models/UsuariosModel.js"
 import ValidacaoServices from "../services/ValidacaoServices.js"
 import UsuariosDAO from "../DAO/UsuariosDAO.js"
 
-/**
- * O que fazer aqui:
- * Buscar email e senha de um usuario para login (get)
- * adicionar um novo usuario (post)
- * remover um usuario (delete)
- * editar informações do cadastro (put)
- * 
- * obs.: para isso preciso validar as informaçoes antes
- */
-
 class UsuariosController{
     /**
      * Método para centralização de rotas no controller
@@ -33,6 +23,32 @@ class UsuariosController{
         })
 
         /**
+         * Rota para buscar usuários pelo email
+         */
+        app.get("/usuarios/:email", (req, res)=>{
+            const email = req.params.email
+            const isValid = ValidacaoServices.validarExistenciaEmail(email)
+            if(isValid){
+                const resposta = UsuariosDAO.buscarEmailUsuario(email)
+                res.status(200).json(resposta)
+            }
+            res.status(404).json({error: true, message: "Email ou senha incorretos!"})
+        })
+
+        /**
+         * Rota para buscar usuários pela senha
+         */
+        app.get("/usuarios/:senha", (req, res)=>{
+            const senha = req.params.senha
+            const isValid = ValidacaoServices.validarExistenciaSenha(senha)
+            if(isValid){
+                const resposta = UsuariosDAO.buscarSenhaUsuario(senha)
+                res.status(200).json(resposta)
+            }
+            res.status(404).json({error: true, message: "Email ou senha incorretos!"})
+        })
+
+        /**
          * Rota para deletar usuário
          */
         app.delete("/usuarios/:id", (req, res)=>{
@@ -40,7 +56,7 @@ class UsuariosController{
             const isValid = ValidacaoServices.validarExistencia(id)
             if(isValid){
                 UsuariosDAO.deletarUsuarioPorId(id)
-                res.status(200).json({error: false})
+                res.status(200).json({error: false, message: "Usuário removido com sucesso"})
             }
             res.status(404).json({error: true, message: `Usuário não encontrado para o id ${id}`})
         })
@@ -55,16 +71,14 @@ class UsuariosController{
                 const usuarioModelado = new UsuariosModel(...body)
                 try {
                     await UsuariosDAO.inserirUsuario(usuarioModelado)
-                    res.status(201).json({
-                        error: false,
-                        message: "Usuário criado com sucesso"
-                    })
-                    console.log("paçoca")
-                } catch (error) {
+                    res.status(201).json({error: false, message: "Usuário cadastrado com sucesso"})
+                } 
+                catch (error) {
                     res.status(503).json({error: true, message: `Servidor indisponível no momento`})
                 }
-            } else {
-                res.status(400).json({error: true, message: `Campos invalidos`})
+            } 
+            else{
+                res.status(400).json({error: true, message: `Campos inválidos`})
             }
         })
 
@@ -75,12 +89,12 @@ class UsuariosController{
             const id = req.params.id
             const body = req.body
             const exists = ValidacaoServices.validarExistencia(id)
-            const isValid = ValidacaoServices.validaCamposUsuario(body.nome, body.email, body.telefone)
+            const isValid = ValidacaoServices.validaCamposUsuario(body.nome, body.sobrenome, body.email, body.cpf, body.senha, body.telefone)
             if(exists){
                 if(isValid){
-                    const usuarioModelado = new UsuariosModel(body.nome, body.email, body.telefone)
+                    const usuarioModelado = new UsuariosModel(body.nome, body.sobrenome, body.email, body.cpf, body.senha, body.telefone)
                     UsuariosDAO.AtualizarUsuarioPorId(id, usuarioModelado)
-                    res.status(204).json()
+                    res.status(204).json({error: false, message: `Campos atualizados`})
                 }
                 res.status(400).json({error: true, message: `Campos invalidos`})
             }
