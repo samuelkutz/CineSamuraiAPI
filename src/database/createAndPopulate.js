@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS "filmes" (
     "id_filme" INTEGER PRIMARY KEY NOT NULL,
     "nome_filme" varchar(255) NOT NULL,
     "linguagem_originaL" varchar(100) NOT NULL,
-    "classificacao_indicativa" varchar(3) NOT NULL,
+    "classificacao_indicativa" varchar(5) NOT NULL,
     "duracao" varchar(10) NOT NULL
   );
 `
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS "sala" (
 const POLTRONA_TABLE = `
 CREATE TABLE IF NOT EXISTS "poltrona" (
   "id_poltrona" int PRIMARY KEY NOT NULL,
-  "tipo_poltrona" varchar(20) NOT NULL,
+  "tipo_poltrona" varchar(25) NOT NULL,
   "disponibilidade" boolean
 );
 `
@@ -120,31 +120,31 @@ VALUES
     ('Avenida Secundária', '18', 'Casa', 'Rio de Janeiro', 'RJ', '20000123'),
     ('Estrada Distante', '7', 'Sala 3B', 'Belo Horizonte', 'MG', '30005678'),
     ('Rua A', '3', 'casa2', 'São Paulo', 'SP', '01234-567'),
-    ('Av. B','45','casa3', Rio de Janeiro, 'RJ', '12345-678'),
+    ('Av. B','45','casa3', 'Rio de Janeiro', 'RJ', '12345-678'),
     ('Rua C','54','ap', 'Belo Horizonte', 'MG', '23456-789'),
     ('Av. D', '23', 'casa1', 'Porto Alegre', 'RS', '34567-890'),
     ('Rua E', '12', 'casa2', 'Salvador', 'BA', '45678-901'),
     ('Av. F', '46', 'casa2', 'Curitiba', 'PR', '56789-012'),
     ('Rua G', '98', 'casa5', 'Manaus', 'AM', '67890-123'),
-    ('Av. H', '34, 'casa1', 'Recife', 'PE', '78901-234'),
+    ('Av. H', '34', 'casa1', 'Recife', 'PE', '78901-234'),
     ('Rua I','56','casa4', 'Brasília', 'DF', '89012-345'),
     ('Av. J', '65', 'casa7', 'Fortaleza', 'CE', '90123-456'),
     ('Rua K', '78', 'casa3', 'Goiânia', 'GO', '01234-567'),
     ('Av. L', '89', 'casa6', 'Florianópolis', 'SC', '12345-678');
 `
 const ADD_FILMES_DATA = `
-INSERT INTO filmes (nome_filme, linguagem_original, classificacao_indicativa, duração)
+INSERT INTO filmes (nome_filme, linguagem_original, classificacao_indicativa, duracao)
 VALUES
     ('Vingadores: Ultimato','Portugues','14','90 minutos'),
-    ('O Poderoso Chefão', 'EUA', 'Portugues','16','120 minutos'),
-    ('Parasita','Portugues','16 ano','90 minutos'),
+    ('O Poderoso Chefão', 'Inglês','16','120 minutos'),
+    ('Parasita','Portugues','16','90 minutos'),
     ('Interestelar','Portugues', '12','80 minutos'),
     ('Pulp Fiction','Inglês','18','90 minutos'),
     ('A Origem','Portugues', '14','120 minutos'),
     ('Cidade de Deus','Portugues','18','80 minutos'),
     ('Clube da Luta','Inglês','18','120 minutos'),
     ('O Senhor dos Anéis: O Retorno do Rei','Portugues','12','80 minutos'),
-    ('Coringa','Inglês','16 anos','120 minutos'),
+    ('Coringa','Ingolês','16 ans','120 minutos'),
     ('O Pianista','Francês','16','120 minutos'),
     ('De Volta para o Futuro','Inglês','Livre','80 minutos'),
     ('A Lista de Schindler','Inglês','14','90 minutos'),
@@ -152,7 +152,7 @@ VALUES
     ('Matrix','Inglês','16','80 minutos');
 `
 const ADD_PRECO_DATA = `
-INSERT INTO preços (dia_semana, valor) 
+INSERT INTO preco (dia_semana, valor) 
 VALUES
     ('segundafeira','12,00'),
     ('quintafeira','18,00'),
@@ -174,7 +174,7 @@ const ADD_PROGRAMACAO_GERAL_DATA = `
 INSERT INTO programacao_geral (id_filme_fk, data_horario,tipo_linguagem)
 VALUES
     (1,'2023-09-10 13:00','comédia'),
-    (2,2023-05-10 19:00','drama'),
+    (2,'2023-05-10 19:00','drama'),
     (3,'2023-07-10 20:00','ficção científica'),
     (4,'2023-04-10 11:00','animação'),
     (5,'2023-02-10 14:00','terror'),
@@ -203,8 +203,10 @@ VALUES
     (55,'Cinépolis IMAX.'),
     (60,'Cinemark XD'); 
 `
+
+//falta o id da sala a qual a poltrona pertence!!!!
 const ADD_POLTRONA_DATA = `
-INSERT INTO poltrona (tipo_poltrona,disponibilidade)
+INSERT INTO poltrona (tipo_poltrona, disponibilidade)
 VALUES 
     ('Obeso','True'),
     ('Cadeirante','True'),
