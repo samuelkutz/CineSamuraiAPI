@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS "preco" (
 `
 const PROGRAMACAO_GERAL_TABLE = `
 CREATE TABLE IF NOT EXISTS "programacao_geral" (
-    "id_pogramacao" int PRIMARY KEY NOT NULL,
+    "id_programacao" INTEGER PRIMARY KEY NOT NULL,
     "id_filme_fk" int,
     "data_horario" datetime,
     "tipo_linguagem" char,
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS "sala" (
 `
 const POLTRONA_TABLE = `
 CREATE TABLE IF NOT EXISTS "poltrona" (
-  "id_poltrona" int PRIMARY KEY NOT NULL,
+  "id_poltrona" INTEGER PRIMARY KEY NOT NULL,
   "tipo_poltrona" varchar(25) NOT NULL,
   "disponibilidade" boolean
 );
@@ -172,7 +172,7 @@ VALUES
     ('quintafeira','18,00');
 `
 const ADD_PROGRAMACAO_GERAL_DATA = `
-INSERT INTO programacao_geral (id_filme_fk, data_horario,tipo_linguagem)
+INSERT INTO programacao_geral (id_filme_fk, data_horario, tipo_linguagem)
 VALUES
     (1,'2023-09-10 13:00','comédia'),
     (2,'2023-05-10 19:00','drama'),
@@ -181,7 +181,7 @@ VALUES
     (5,'2023-02-10 14:00','terror'),
     (6,'2023-09-10 17:00','Ação'),
     (7,'2023-08-10 21:00','documentário'),
-    (8,'2023-10-10 23:00','aventura'),
+    (8,'2023-10-10 23:00','aventura'), 
     (9,'2023-01-10 22:00','suspense'),
     (10,'2023-02-10 18:00','comédia'),
     (11,'2023-05-10 19:00','romance'),
@@ -218,7 +218,7 @@ VALUES
     ('Obeso','False'),
     ('Mobilidade reduzida','True'),
     ('Regular','True'),
-    ('Obeso''True'),
+    ('Obeso','True'),
     ('Regular','True'),
     ('Regular','True'),
     ('Obeso','True'),
