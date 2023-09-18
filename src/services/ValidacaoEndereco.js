@@ -1,3 +1,5 @@
+import EnderecoDAO from "../DAO/EnderecoDAO";
+
 class ValidacaoEndereco {
     /**
      * Validação para o logradouro
