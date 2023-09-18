@@ -48,10 +48,10 @@ CREATE TABLE IF NOT EXISTS "preco" (
 const PROGRAMACAO_GERAL_TABLE = `
 CREATE TABLE IF NOT EXISTS "programacao_geral" (
     "id_programacao" INTEGER PRIMARY KEY NOT NULL,
-    "id_filme_fk" int,
+    "id_filme_fk" INTEGER,
     "data_horario" datetime,
     "tipo_linguagem" char,
-    "id_preco_fk" int
+    "id_preco_fk" INTEGER
   );
 `
 const SALA_TABLE = `
@@ -232,7 +232,7 @@ VALUES
     (2,'3D',2,2,3),
     (3,'VIP',3,3,2),
     (4,'3D',1,2,2),
-    (5,'2D',3,3,4),
+    (5,'2D',3,3,4), 
     (6,'3D',3,4,5),
     (7,'4D',2,3,5),
     (8,'VIP',3,3,6),
