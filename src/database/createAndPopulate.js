@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS "cadastro_usuarios" (
 const ENDERECO_TABLE = `
 CREATE TABLE IF NOT EXISTS "endereco" (
     "id_endereco" INTEGER PRIMARY KEY NOT NULL,
-    "lougradoro" varchar(100) NOT NULL,
+    "logradouro" varchar(100) NOT NULL,
     "numero" varchar(5) NOT NULL,
     "complemento" varchar(100),
     "cidade" varchar(100) NOT NULL,
@@ -70,13 +70,14 @@ CREATE TABLE IF NOT EXISTS "poltrona" (
 `
 const SESSAO_TABLE = `
 CREATE TABLE IF NOT EXISTS "sessao" (
-  "id_sessao" int PRIMARY KEY NOT NULL,
+  "id_sessao" INTEGER PRIMARY KEY NOT NULL,
   "id_filme_fk" INTEGER,
   "tipo_sessao" varchar(5) NOT NULL,
   "id_programacao_geral_fk" INTEGER,
   "sala_fk" INTEGER,
   "id_poltrona_fk" INTEGER
 );
+
 `
 const INGRESSO_TABLE = `
 CREATE TABLE IF NOT EXISTS "ingresso" (
@@ -249,23 +250,23 @@ VALUES
     ('True',1,3,1),
     ('False',2,2,3),
     ('True',2,3,3),
-    ('False'4,3,2),
-    ('True'5,3,4),
-    ('False'6,3,5),
-    ('True'7,8,9),
-    ('False'8,9,4),
-    ('True'9,2,4),
-    ('False'10,1,4),
-    ('True'11,2,4),
-    ('False'12,8,7),
-    ('True'13,4,3),
-    ('False'14,5,3),
-    ('True'15,1,3),
-    ('False'16,5,3),
-    ('True'17,1,7),
-    ('False'18,5,3),
-    ('True'19,5,3),
-    ('False'20,1,3);
+    ('False', 4,3,2),
+    ('True',5,3,4),
+    ('False',6,3,5),
+    ('True',7,8,9),
+    ('False', 8,9,4),
+    ('True',9,2,4),
+    ('False',10,1,4),
+    ('True',11,2,4),
+    ('False',12,8,7),
+    ('True',13,4,3),
+    ('False',14,5,3),
+    ('True',15,1,3),
+    ('False',16,5,3),
+    ('True',17,1,7),
+    ('False',18,5,3),
+    ('True',19,5,3),
+    ('False',20,1,3);
 `
 /**
  * Function que aplica a criação das tabelas
