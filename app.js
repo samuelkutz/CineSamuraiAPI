@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import {config} from "dotenv"
+import UsuariosController from "./src/controllers/UsuariosController.js";
+import FilmesController from "./src/controllers/FilmesController.js";
 
 config()
 
@@ -14,3 +16,5 @@ app.listen(port, ()=>{
 
 app.use(express.json())
 app.use(cors())
+
+
