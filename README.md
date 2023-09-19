@@ -2,12 +2,12 @@
 
 <h3>Projeto em grupo modulo 4 - Criação do Back-end do CineSamurai</h3> 
 
-<p>O CineSamurai é um cinema no qual se tem a necessidade de obter uma tecnológia que auxilie na vendada de ingressos, para facilitar e agilizar o atendimento dos clientes, desta forma foi criado nessa primeira etapa do projeto o Back-end dessa futura plataforma. Nela foi ultizando a API REST com NodeJs, que irá cuidar de todas as entidades da empresa, utilizando o framework express. </p>
+<p>O CineSamurai é um cinema que precisa adquirir tecnologia para auxiliar na venda de ingressos, a fim de facilitar e agilizar o atendimento aos clientes. Nesta primeira etapa do projeto, foi desenvolvido o backend dessa futura plataforma, utilizando a API REST com Node.js e o framework Express. </p>
 
 
 <h2>🚀 Começando</h2>
 
-<p>Esse projeto Foi criado com intuido de construir um sistema para gerenciar reservas de ingressos, vendas e outras operações relacionadas a um cinema, que faz a venda dos seus ingressos online. Nesse contexto, a modelagem de banco de dados foi essencial para definir como as informações serão armazenadas e relacionadas entre si, como as entidades e os principais objetos de dados, como filmes, salas, sessões, clientes e ingressos. Além disso, trabalhamos o pensamneto da lógica de negócios, que é a parte do sistema que determina como essas entidades interagem e quais operações podem ser realizadas, como a compra de ingressos, o gerenciamento de estoque de assentos, a geração de bilhetes, a autenticação de clientes.</p>
+<p>Este projeto foi criado com o intuito de construir um sistema para gerenciar reservas de ingressos, vendas e outras operações relacionadas a um cinema que realiza a venda de ingressos online. Nesse contexto, a modelagem do banco de dados foi essencial para definir como as informações serão armazenadas e relacionadas entre si, incluindo entidades e principais objetos de dados, como filmes, salas, sessões, clientes e ingressos. Além disso, trabalhamos na definição da lógica de negócios, que é a parte do sistema responsável por determinar como essas entidades interagem e quais operações podem ser realizadas, como a compra de ingressos, o gerenciamento do estoque de assentos, a geração de bilhetes e a autenticação de clientes.</p>
 
 
 <h2>🔧 Instalação </h2>
