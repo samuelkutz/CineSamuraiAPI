@@ -155,21 +155,13 @@ VALUES
 const ADD_PRECO_DATA = `
 INSERT INTO preco (dia_semana, valor) 
 VALUES
-    ('segundafeira','12,00'),
-    ('quintafeira','18,00'),
-    ('terçafeira','15,00'),
-    ('sextafeira','24,00'),
-    ('quartafeira','15,00'),
-    ('terçafeira','15,00'),
-    ('quintafeira','18,00'),
-    ('quartafeira','15,00'),
-    ('sextafeira','24,00'),
-    ('quintafeira','18,00'),
-    ('terçafeira','15,00'),
-    ('quartafeira','15,00'),
-    ('segundafeira','12,00'),
-    ('sextafeira','24,00'),
-    ('quintafeira','18,00');
+    ('seg','12.00'),
+    ('ter','15.00'),
+    ('qua','15.00'),
+    ('qui','16.00'),
+    ('sex','26.00'),
+    ('sab','26.00'),
+    ('dom','26.00'),
 `
 const ADD_PROGRAMACAO_GERAL_DATA = `
 INSERT INTO programacao_geral (id_filme_fk, data_horario, tipo_linguagem)
