@@ -61,7 +61,7 @@ class ValidacaoServices{
      */
     static validarExistenciaSenha(senha){
         const senhaExistente = UsuariosDAO.buscarSenhaUsuario(senha)
-        return senha 
+        return senhaExistente 
     }
 
     /**
