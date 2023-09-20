@@ -161,7 +161,7 @@ VALUES
     ('qui','16.00'),
     ('sex','26.00'),
     ('sab','26.00'),
-    ('dom','26.00'),
+    ('dom','26.00');
 `
 const ADD_PROGRAMACAO_GERAL_DATA = `
 INSERT INTO programacao_geral (id_filme_fk, data_horario, tipo_linguagem)

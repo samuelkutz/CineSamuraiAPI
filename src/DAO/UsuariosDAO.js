@@ -1,5 +1,4 @@
 import UsuariosModel from "../models/UsuariosModel.js"
-import ValidacaoUsuarios from "../services/ValidacaoUsuarios.js"
 import DAO from "./DAO.js"
 
 const CADASTRO_USUARIOS_TABLE = "cadastro_usuarios"
@@ -26,7 +25,7 @@ class UsuariosDAO extends DAO {
      */
     static async buscarUsuarioPorId(id){
         const query = `
-        SELECT * FROM ${CADASTRO_USUARIOS_TABLE} WHERE id_usuario = ?;
+        SELECT * FROM ${CADASTRO_USUARIOS_TABLE} WHERE id_cadastro = ?;
         ` 
         try{ 
             const result = await this.buscarPorId(query, id)
@@ -36,15 +35,14 @@ class UsuariosDAO extends DAO {
             throw error
         }
     }
-    
 
     /** 
      * @param {string} email 
      * @returns {Array<UsuariosModel>}
      */
-    static async buscarEmailUsuario(email){
+    static async buscarUsuarioPorEmail(email){
         const query = `
-        SELECT * FROM ${CADASTRO_USUARIOS_TABLE} WHERE email = ?;
+        SELECT * FROM ${CADASTRO_USUARIOS_TABLE} WHERE email_cadastro = ?;
         `
         try{ 
             const resposta = await this.buscarDado(query, email)
@@ -59,9 +57,9 @@ class UsuariosDAO extends DAO {
      * @param {string} senha 
      * @returns {Array<any>}
      */
-    static async buscarSenhaUsuario(senha){
+    static async buscarUsuarioPorSenha(senha){
         const query = `
-        SELECT * FROM ${CADASTRO_USUARIOS_TABLE} WHERE senha = ?;
+        SELECT * FROM ${CADASTRO_USUARIOS_TABLE} WHERE senha_cadastro = ?;
         `
         try{ 
             const resposta = await this.buscarDado(query, senha)
@@ -79,7 +77,7 @@ class UsuariosDAO extends DAO {
      */
     static async deletarUsuarioPorId(id){
         const query = `
-        DELETE FROM ${CADASTRO_USUARIOS_TABLE} WHERE senha = ?;
+        DELETE FROM ${CADASTRO_USUARIOS_TABLE} WHERE senha_cadastro = ?;
         `
         try {
             await this.deletarPorId(query, id)
@@ -93,14 +91,14 @@ class UsuariosDAO extends DAO {
      * @param {string} id 
      * @param {any} data 
      */
-    static async AtualizarUsuarioPorId(id, data){
+    static async atualizarUsuarioPorId(id, data){
         const query = `
         UPDATE ${CADASTRO_USUARIOS_TABLE} SET (ID, NOME, EMAIL, TELEFONE) = (?,?,?,?) WHERE ID = ?
         `
         const values = Object.values(data)
 
         try {            
-            await this.atualizarPorId(query, id, [id ,...values])
+            await this.atualizarPorId(query, id, ...values)
         } catch (error) {
             throw error
         }

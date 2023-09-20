@@ -1,15 +1,11 @@
 import Database from "../database/Database.js";
 
-import sqlite3 from 'sqlite3';
-
-const db = new sqlite3.Database('database.db');
-
 class DAO {
     /**
      * Método de inserção de dados
      * @param {string} query 
      * @param {Array<any>} data 
-     * @returns {Promise<{ error: boolean, lastInsertId?: number }>}
+     * @returns {Promise<{error: boolean, message: string}>}
      */
     static async inserir(query, data) {
         return new Promise((resolve, reject) => {
@@ -30,17 +26,17 @@ class DAO {
      * @param {string} query 
      * @returns {Promise<Array<any>>}
      */
-    static async buscar(entidade) {
+    static async buscar(query) {
             return new Promise((resolve, reject) => {
-            Database.all(query, (error, rows) => {
+                Database.all(query, (error, rows) => {
                 if (error) {
                     console.error(error)
                     reject(error)
                 } else {
                     resolve(rows)
                 }
-            });
-        });
+            })
+        })
     }
 
     /**
@@ -51,9 +47,8 @@ class DAO {
      */
     static buscarPorId(query, id) {
         return new Promise((resolve, reject) => {
-            Database.get(query, [id], (error, row) => {
+            Database.get(query, id, (error, row) => {
                 if (error) {
-                    console.error(error)
                     reject(error)
                 } else {
                     resolve(row)
@@ -71,7 +66,7 @@ class DAO {
 
     static buscarDado(query, dado) {
         return new Promise((resolve, reject) => {
-            Database.get(query, [dado], (error, row) => {
+            Database.get(query, dado, (error, row) => {
                 if (error) {
                     console.error(error)
                     reject(error)
@@ -89,13 +84,10 @@ class DAO {
      */
     static deletarPorId(query, id){
         new Promise((resolve, reject) => {
-            Database.run(query, [id], (error) => {
+            Database.all(query, id, (error) => {
                 if (error) {
                     console.error(error)
                     reject(error)
-                }
-                else {
-                    resolve({error : false})
                 }
             })
         })
@@ -107,11 +99,14 @@ class DAO {
      * @param {string} id 
      * @param {any} data 
      */
-    static atualizarPorId(query, id, data) {
-        return new Database.run(query, [data.campo1, data.campo2, id], (error) => {
-            if (error) {
-                console.error(error)
-            }
+    static atualizarPorId(query, id, data){
+        return new Promise((resolve, reject) => {
+            Database.run(query, [...data, id], (error) => {
+                if(error){
+                    console.error(error)
+                    reject(error)
+                }
+            })
         })
     }
 }
