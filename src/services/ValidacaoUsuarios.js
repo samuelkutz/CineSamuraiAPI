@@ -1,7 +1,7 @@
 import UsuariosDAO from "../DAO/UsuariosDAO.js";
 import {cpf} from "cpf-cnpj-validator"
 
-class ValidacaoServices{
+class ValidacaoUsuarios{
     /**
      * Método que valida a existencia do usuário na base de dados
      * @param {string} id 
@@ -100,4 +100,4 @@ class ValidacaoServices{
     }
 }
 
-export default ValidacaoServices
+export default ValidacaoValidacao
