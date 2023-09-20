@@ -1,9 +1,10 @@
-import UsuariosModel from "../models/UsuariosModel.js";
-import DAO from "./DAO.js";
+import UsuariosModel from "../models/UsuariosModel.js"
+import ValidacaoUsuarios from "../services/ValidacaoUsuarios.js"
+import DAO from "./DAO.js"
 
 const CADASTRO_USUARIOS_TABLE = "cadastro_usuarios"
 
-class UsuariosDAO extends DAO{
+class UsuariosDAO extends DAO {
     /**
      * Método de inserção de dados da tabela Cadastro Usuários
      * @param {UsuariosModel} data 
@@ -11,8 +12,9 @@ class UsuariosDAO extends DAO{
     static async inserirUsuario(data){
         const dataValues = Object.values(data)
         const query = `
-        INSERT INTO cadastro_usuarios (nome_usuario, sobrenome, email_cadastro, cpf, senha_cadastro, telefone) VALUES (?,?,?,?,?,?)
+        INSERT INTO ${CADASTRO_USUARIOS_TABLE} (nome_usuario, sobrenome, email_cadastro, cpf, senha_cadastro, telefone) VALUES (?,?,?,?,?,?)
         `
+
         const resultado = await this.inserir(query, dataValues)
         return resultado
     }
@@ -20,34 +22,70 @@ class UsuariosDAO extends DAO{
     /**
      * Método de busca de registros específicos na tabela Cadastro Usuários através de um identificador
      * @param {string} id 
-     * @returns 
+     * @returns {UsuariosModel}
      */
-    static buscarUsuarioPorId(id){
-        return this.buscarPorId(CADASTRO_USUARIOS_TABLE, id)
+    static async buscarUsuarioPorId(id){
+        const query = `
+        SELECT * FROM ${CADASTRO_USUARIOS_TABLE} WHERE id_usuario = ?;
+        ` 
+        try{ 
+            const result = await this.buscarPorId(query, id)
+            return result
+        }
+        catch (error){
+            throw error
+        }
     }
+    
 
     /** 
      * @param {string} email 
-     * @returns 
+     * @returns {Array<UsuariosModel>}
      */
-    static buscarEmailUsuario(email){
-        return this.buscarDado(CADASTRO_USUARIOS_TABLE, email)
+    static async buscarEmailUsuario(email){
+        const query = `
+        SELECT * FROM ${CADASTRO_USUARIOS_TABLE} WHERE email = ?;
+        `
+        try{ 
+            const resposta = await this.buscarDado(query, email)
+            return resposta
+        }
+        catch (error){
+            throw error
+        }
     }
 
     /**
      * @param {string} senha 
-     * @returns 
+     * @returns {Array<any>}
      */
-    static buscarSenhaUsuario(senha){
-        return this.buscarDado(CADASTRO_USUARIOS_TABLE, senha)
+    static async buscarSenhaUsuario(senha){
+        const query = `
+        SELECT * FROM ${CADASTRO_USUARIOS_TABLE} WHERE senha = ?;
+        `
+        try{ 
+            const resposta = await this.buscarDado(query, senha)
+            return resposta
+        }
+        catch (error){
+            throw error
+        }
+
     }
 
     /**
      * Método de deleção de registros específicos na tabela Usuários através de um identificador
      * @param {string} id 
      */
-    static deletarUsuarioPorId(id){
-        this.deletarPorId(CADASTRO_USUARIOS_TABLE, id)
+    static async deletarUsuarioPorId(id){
+        const query = `
+        DELETE FROM ${CADASTRO_USUARIOS_TABLE} WHERE senha = ?;
+        `
+        try {
+            await this.deletarPorId(query, id)
+        } catch (error) {
+            throw error
+        }
     }
 
     /**
@@ -55,8 +93,17 @@ class UsuariosDAO extends DAO{
      * @param {string} id 
      * @param {any} data 
      */
-    static AtualizarUsuarioPorId(id, data){
-        this.atualizarPorId(CADASTRO_USUARIOS_TABLE, id, data)
+    static async AtualizarUsuarioPorId(id, data){
+        const query = `
+        UPDATE ${CADASTRO_USUARIOS_TABLE} SET (ID, NOME, EMAIL, TELEFONE) = (?,?,?,?) WHERE ID = ?
+        `
+        const values = Object.values(data)
+
+        try {            
+            await this.atualizarPorId(query, id, [id ,...values])
+        } catch (error) {
+            throw error
+        }
     }
 }
 
