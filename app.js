@@ -16,5 +16,4 @@ app.listen(port, ()=>{
 app.use(express.json())
 app.use(cors())
 
-
 UsuariosController.rotas(app)

@@ -16,7 +16,7 @@ class ValidacaoEndereco {
      * @returns {boolean} - true se o número for válido, caso contrário, false.
      */
     static validaNumero(numero) {
-        return typeof numero === "string" && numero.length > 0;
+        return typeof numero === "string" && numero.length > 0 && parseInt(numero) > 0;
     }
 
     /**

@@ -36,13 +36,13 @@ class UsuariosDAO extends DAO {
      */
     static async buscarUsuarioPorId(id){
         const query = `
-        SELECT * FROM ${CADASTRO_USUARIOS_TABLE} WHERE id_cadastro = ?;
-        ` 
-        try{ 
-            const result = await this.buscarPorId(query, id)
-            return result
-        }
-        catch (error){
+        SELECT * FROM ${CADASTRO_USUARIOS_TABLE} where id_cadastro = ?;
+        `
+        try {
+            const response = await this.buscarPorId(query, id)
+            return response
+        } 
+        catch (error) {
             throw error
         }
     }
@@ -79,7 +79,6 @@ class UsuariosDAO extends DAO {
         catch (error){
             throw error
         }
-
     }
 
     /**
@@ -88,7 +87,7 @@ class UsuariosDAO extends DAO {
      */
     static async deletarUsuarioPorId(id){
         const query = `
-        DELETE FROM ${CADASTRO_USUARIOS_TABLE} WHERE senha_cadastro = ?;
+        DELETE FROM ${CADASTRO_USUARIOS_TABLE} WHERE id_cadastro = ?
         `
         try {
             await this.deletarPorId(query, id)
@@ -104,13 +103,14 @@ class UsuariosDAO extends DAO {
      */
     static async atualizarUsuarioPorId(id, data){
         const query = `
-        UPDATE ${CADASTRO_USUARIOS_TABLE} SET (ID, NOME, EMAIL, TELEFONE) = (?,?,?,?) WHERE ID = ?
+        UPDATE ${CADASTRO_USUARIOS_TABLE} SET (id_cadastro, nome_usuario, sobrenome, email_cadastro, cpf, senha_cadastro, telefone, id_endereco_fk) = (?,?,?,?,?,?,?,?) WHERE id_cadastro = ?
         `
         const values = Object.values(data)
 
         try {            
-            await this.atualizarPorId(query, id, ...values)
+            await this.atualizarPorId(query, id, [id , ...values])
         } catch (error) {
+            console.log(error)
             throw error
         }
     }

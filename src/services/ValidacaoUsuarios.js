@@ -82,7 +82,13 @@ class ValidacaoUsuarios{
      * @returns {boolean}
      */
     static validaTelefone(telefone){
-        const telefoneInt = parseInt(telefone)
+        let telefoneInt
+        try{
+            telefoneInt = parseInt(telefone)
+        }
+        catch {
+            return false
+        }
         return typeof telefone == "string" && telefone.length > 11 && telefone == telefoneInt
     }
 
@@ -97,6 +103,8 @@ class ValidacaoUsuarios{
      * @returns 
      */
     static validaCamposUsuario(nome, sobrenome, email, numCPF, senha, telefone){
+        
+
         const ehValido = this.validaNome(nome) && this.validaSobrenome(sobrenome) && this.validaEmail(email) && this.validaCPF(numCPF) 
         && this.validaSenha(senha) && this.validaTelefone(telefone)
         return ehValido
