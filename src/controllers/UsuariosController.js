@@ -1,5 +1,5 @@
 import UsuariosModel from "../models/UsuariosModel.js"
-import ValidacaoServices from "../services/ValidacaoServices.js"
+import ValidacaoUsuarios from "../services/ValidacaoUsuarios.js"
 import UsuariosDAO from "../DAO/UsuariosDAO.js"
 
 class UsuariosController{
@@ -8,13 +8,20 @@ class UsuariosController{
      * @param {Express} app 
      */
     static rotas(app){
-        
+        /**
+         * Rota para buscar todos os usuários
+         */
+        app.get("/usuarios", async (req, res) => {
+            const usuarios = await UsuariosDAO.buscarTodosOsUsuarios()
+            res.status(200).json(usuarios)
+        })
+
         /**
          * Rota para buscar usuários pelo id
          */
         app.get("/usuarios/:id", (req, res)=>{
             const id = req.params.id
-            const isValid = ValidacaoServices.validarExistencia(id)
+            const isValid = ValidacaoUsuarios.validarExistenciaPorId(id)
             if(isValid){
                 const resposta = UsuariosDAO.buscarUsuarioPorId(id)
                 res.status(200).json(resposta)
@@ -27,7 +34,7 @@ class UsuariosController{
          */
         app.get("/usuarios/:email", (req, res)=>{
             const email = req.params.email
-            const isValid = ValidacaoServices.validarExistenciaEmail(email)
+            const isValid = ValidacaoUsuarios.validarExistenciaEmail(email)
             if(isValid){
                 const resposta = UsuariosDAO.buscarEmailUsuario(email)
                 res.status(200).json(resposta)
@@ -40,20 +47,20 @@ class UsuariosController{
          */
         app.get("/usuarios/:senha", (req, res)=>{
             const senha = req.params.senha
-            const isValid = ValidacaoServices.validarExistenciaSenha(senha)
+            const isValid = ValidacaoUsuarios.validarExistenciaSenha(senha)
             if(isValid){
                 const resposta = UsuariosDAO.buscarSenhaUsuario(senha)
                 res.status(200).json(resposta)
             }
             res.status(404).json({error: true, message: "Email ou senha incorretos!"})
-        })
+        }) //????????????????????????????????
 
         /**
          * Rota para deletar usuário
          */
         app.delete("/usuarios/:id", (req, res)=>{
             const id = req.params.id
-            const isValid = ValidacaoServices.validarExistencia(id)
+            const isValid = ValidacaoUsuarios.validarExistenciaPorId(id)
             if(isValid){
                 UsuariosDAO.deletarUsuarioPorId(id)
                 res.status(200).json({error: false, message: "Usuário removido com sucesso"})
@@ -66,7 +73,9 @@ class UsuariosController{
          */
         app.post("/usuarios", async (req, res)=>{
             const body = Object.values(req.body)
-            const isValid = ValidacaoServices.validaCamposUsuario(...body)
+            console.log(body)
+
+            const isValid = ValidacaoUsuarios.validaCamposUsuario(...body)
             if(isValid){
                 const usuarioModelado = new UsuariosModel(...body)
                 try {
@@ -88,8 +97,8 @@ class UsuariosController{
         app.put("/usuarios/:id", (req, res)=>{
             const id = req.params.id
             const body = req.body
-            const exists = ValidacaoServices.validarExistencia(id)
-            const isValid = ValidacaoServices.validaCamposUsuario(body.nome, body.sobrenome, body.email, body.cpf, body.senha, body.telefone)
+            const exists = ValidacaoUsuarios.validarExistenciaPorId(id)
+            const isValid = ValidacaoUsuarios.validaCamposUsuario(body.nome, body.sobrenome, body.email, body.cpf, body.senha, body.telefone)
             if(exists){
                 if(isValid){
                     const usuarioModelado = new UsuariosModel(body.nome, body.sobrenome, body.email, body.cpf, body.senha, body.telefone)

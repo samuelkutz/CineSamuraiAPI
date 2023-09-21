@@ -19,6 +19,17 @@ class UsuariosDAO extends DAO {
     }
 
     /**
+     * Método que retorna todos os registros da tabela Usuários
+     * @returns {Array<UsuariosModel>}
+     */
+    static async buscarTodosOsUsuarios(){
+        const query = `
+        SELECT * FROM ${CADASTRO_USUARIOS_TABLE};
+        `
+        return await this.buscar(query)
+    }
+
+    /**
      * Método de busca de registros específicos na tabela Cadastro Usuários através de um identificador
      * @param {string} id 
      * @returns {UsuariosModel}

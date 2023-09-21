@@ -7,11 +7,14 @@ class ValidacaoUsuarios{
      * @param {string} id 
      * @returns {boolean}
      */
-    static validarExistenciaPorId(id){
-        const usuario = UsuariosDAO.buscarUsuarioPorId(id)
-        return usuario
+    static async validarExistenciaPorId(id){
+        try {
+            await UsuariosDAO.buscarUsuarioPorId(id)
+        } 
+        catch (error) {
+            throw error
+        }
     }
-
     /**
      * Métodos de validação de nome e sobrenome
      * @param {string} nome 
@@ -100,4 +103,4 @@ class ValidacaoUsuarios{
     }
 }
 
-export default ValidacaoValidacao
+export default ValidacaoUsuarios
