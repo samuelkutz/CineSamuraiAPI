@@ -3,7 +3,7 @@ import cors from "cors"
 import {config} from "dotenv"
 import UsuariosController from "./src/controllers/UsuariosController.js"
 import PrecoController from "./src/controllers/PrecoController.js"
-// import EnderecoController from "./src/controllers/EnderecoController.js"
+import EnderecoController from "./src/controllers/EnderecoController.js"
 // import FilmesController from "./src/controllers/FilmesController.js"
 import IngressoController from "./src/controllers/IngressoController.js"
 // import PoltronaController from "./src/controllers/PoltronaController.js"
@@ -26,7 +26,7 @@ app.use(cors())
 
 UsuariosController.rotas(app)
 PrecoController.rotas(app)
-// EnderecoController.rotas(app)
+EnderecoController.rotas(app)
 // FilmesController.rotas(app)
 IngressoController.rotas(app)
 // PoltronaController.rotas(app)

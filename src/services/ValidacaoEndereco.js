@@ -1,6 +1,22 @@
-import EnderecoDAO from "../DAO/EnderecoDAO";
+import EnderecoDAO from "../DAO/EnderecoDAO.js"; 
+import cep from 'cep-promise'
 
 class ValidacaoEndereco {
+
+    /**
+     * Método que valida a existencia do endereço na base de dados
+     * @param {string} id 
+     * @returns {boolean}
+     */
+    static async validarExistenciaPorId(id){
+        try {
+            await EnderecoDAO.buscarEnderecoPorId(id)
+        } 
+        catch (error) {
+            throw error
+        }
+    }
+
     /**
      * Validação para o logradouro
      * @param {string} logradouro - Logradouro do endereço.
@@ -42,11 +58,19 @@ class ValidacaoEndereco {
      * @param {string} cep - CEP do endereço.
      * @returns {boolean} - true se o CEP for válido, caso contrário, false.
      */
-    static validaCEP(cep) {
-        // Implemente a validação específica para o formato de CEP desejado
-        // Por exemplo, você pode verificar o comprimento e o formato do CEP.
-        // Exemplo simplificado:
-        return typeof cep === "string" && cep.length === 8 && /^\d{8}$/.test(cep);
+    static async validaCEP(num_cep) {
+        if (typeof num_cep !== "string" || num_cep.length !== 8 || !/^\d{8}$/.test(num_cep)) {
+            return false; // CEP inválido
+        }
+
+        // Usa a biblioteca "cep-promise" para verificar se o CEP é válido
+        try {
+            const result = await cep(num_cep);
+            return result && result.street; // Retorna true se o CEP for válido e encontrado
+        } catch (error) {
+            return false; // Erro ao verificar o CEP
+        }
+    
     }
 
     /**
