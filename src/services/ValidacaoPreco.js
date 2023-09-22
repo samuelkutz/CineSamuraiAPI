@@ -6,9 +6,13 @@ class ValidacaoPreco {
      * @param {string} id 
      * @returns 
      */
-    static validarExistenciaPorId(id){
-        const preco = PrecoDAO.buscarPrecoPorId(id)
-        return preco
+    static async validarExistenciaPorId(id){
+        try {
+            await PrecoDAO.buscarPrecoPorId(id)
+        } 
+        catch (error) {
+            throw error
+        }
     }
 
     /**
@@ -30,7 +34,8 @@ class ValidacaoPreco {
     }
 
     static validaCamposPreco(dia_semana, valor){
-        const ehValido = this.validaDiaSemana(dia_semana) && this.validaValor(valor) 
+
+        const ehValido = this.validaDiaSemana(dia_semana) && this.validaValor(valor)
         return ehValido
     }
 }

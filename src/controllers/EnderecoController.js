@@ -1,4 +1,4 @@
-import EnderecoModel from "../models/EnderecoModel"
+import EnderecoModel from "../models/EnderecoModel.js"
 import ValidacaoEndereco from "../services/ValidacaoEndereco.js";
 import EnderecoDAO from "../DAO/EnderecoDAO.js";
 
