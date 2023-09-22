@@ -1,6 +1,20 @@
-import FilmesDAO from "../DAO/FilmesDAO";
-
+import FilmesDAO from "../DAO/FilmesDAO.js";
+ 
 class ValidacaoFilme {
+    /**
+     * Método que valida a existencia do filme na base de dados
+     * @param {string} id 
+     * @returns {boolean}
+     */
+    static async validarExistenciaPorId(id){
+        try {
+            await FilmesDAO.buscarFilmePorId(id)
+        } 
+        catch (error) {
+            throw error
+        }
+    }
+
     /**
      * Método para validar o nome de um filme
      * @param {string} nome

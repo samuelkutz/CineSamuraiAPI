@@ -33,7 +33,7 @@ const FILMES_TABLE = `
 CREATE TABLE IF NOT EXISTS "filmes" (
     "id_filme" INTEGER PRIMARY KEY NOT NULL,
     "nome_filme" varchar(255) NOT NULL,
-    "linguagem_originaL" varchar(100) NOT NULL,
+    "linguagem_original" varchar(100) NOT NULL,
     "classificacao_indicativa" varchar(5) NOT NULL,
     "duracao" varchar(10) NOT NULL
   );
