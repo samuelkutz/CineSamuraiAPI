@@ -5,7 +5,7 @@ const INGRESSO_TABLE = "ingresso"
 
 class IngressoDAO extends DAO {
     /**
-     * Método de inserção de dados da tabela Ingresso
+     * Método de inserção de dados da tabela ingresso
      * @param {IngressoModel} data 
      */
     static async inserirIngresso(data){
@@ -14,23 +14,35 @@ class IngressoDAO extends DAO {
         INSERT INTO ${INGRESSO_TABLE} (tipo_ingresso) VALUES (?)
         `
 
-        const resultado = await this.inserir(query, dataValues)
-        return resultado
+        try {
+            const resultado = await this.inserir(query, dataValues)
+            return resultado
+        } catch (error) {
+            console.error(error)
+            throw error
+        }
     }
 
     /**
-     * Método que retorna todos os registros da tabela Ingresso
+     * Método que retorna todos os registros da tabela Tipo de ingresso
      * @returns {Array<IngressoModel>}
      */
-    static async buscarTodosOsIngresso(){
+    static async buscarTodosOsIngressos(){
         const query = `
         SELECT * FROM ${INGRESSO_TABLE};
         `
-        return await this.buscar(query)
+
+        try {
+            const response = await this.buscar(query)
+            return response
+        } catch (error) {
+            console.error(error)
+            throw error
+        }
     }
 
     /**
-     * Método de busca de registros específicos na tabela Ingresso através de um identificador
+     * Método de busca de registros específicos na tabela ingresso através de um identificador
      * @param {string} id 
      * @returns {IngressoModel}
      */
@@ -43,13 +55,13 @@ class IngressoDAO extends DAO {
             return response
         } 
         catch (error) {
+            console.error(error)
             throw error
         }
     }
 
-
     /**
-     * Método de deleção de registros específicos na tabela Ingresso através de um identificador
+     * Método de deleção de registros específicos na tabela Tipo de ingresso através de um identificador
      * @param {string} id 
      */
     static async deletarIngressoPorId(id){
@@ -59,12 +71,13 @@ class IngressoDAO extends DAO {
         try {
             await this.deletarPorId(query, id)
         } catch (error) {
+            console.error(error)
             throw error
         }
     }
 
     /**
-     * Atualiza um registro específico da tabela Ingresso através de um identificador
+     * Atualiza um registro específico da tabela Tipo de ingresso através de um identificador
      * @param {string} id 
      * @param {any} data 
      */

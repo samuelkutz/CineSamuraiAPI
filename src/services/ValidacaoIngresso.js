@@ -26,16 +26,12 @@ class ValidacaoIngresso{
         return typeof tipo_ingresso == "boolean"
     }
 
-   
-
     /**
      * 
      * @param {string} tipo_ingresso
      * @returns 
      */
     static validaCampoIngresso(tipo_ingresso){
-        
-
         const ehValido = this.validaTipoIngresso(tipo_ingresso)
         return ehValido
     }
