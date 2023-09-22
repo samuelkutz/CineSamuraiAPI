@@ -1,35 +1,74 @@
-import DAO from "./DAO.js";
-import Database from "../database/Database.js";
+import IngressoModel from "../models/IngressoModel.js"
+import DAO from "./DAO.js"
+
+const INGRESSO_TABLE = "ingresso"
 
 class IngressoDAO extends DAO {
-    static async inserirIngresso(data) {
-        const dataValues = Object.values(data);
+    /**
+     * Método de inserção de dados da tabela Ingresso
+     * @param {IngressoModel} data 
+     */
+    static async inserirIngresso(data){
+        const dataValues = Object.values(data)
         const query = `
-        INSERT INTO ingresso (tipo_ingresso, id_preco_fk, id_sessao_fk, id_usuario_fk)
-        VALUES (?, ?, ?, ?)
-    `;
-        const resultado = await this.inserir(query, dataValues);
-        return resultado;
+        INSERT INTO ${INGRESSO_TABLE} (tipo_ingresso) VALUES (?)
+        `
+
+        const resultado = await this.inserir(query, dataValues)
+        return resultado
     }
 
-    static buscarIngressoPorId(id) {
-        return this.buscarPorId("ingresso", id);
-    }
-
-    static buscarIngressosPorUsuario(idUsuario) {
+    /**
+     * Método que retorna todos os registros da tabela Ingresso
+     * @returns {Array<IngressoModel>}
+     */
+    static async buscarTodosOsIngresso(){
         const query = `
-      SELECT * FROM ingresso WHERE id_usuario_fk = ?;
-    `;
-        return this.buscar(query, [idUsuario]);
+        SELECT * FROM ${INGRESSO_TABLE};
+        `
+        return await this.buscar(query)
     }
 
-    static deletarIngressoPorId(id) {
-        this.deletarPorId("ingresso", id);
+    /**
+     * Método de busca de registros específicos na tabela Ingresso através de um identificador
+     * @param {string} id 
+     * @returns {IngressoModel}
+     */
+    static async buscarIngressoPorId(id){
+        const query = `
+        SELECT * FROM ${INGRESSO_TABLE} where id_ingresso = ?;
+        `
+        try {
+            const response = await this.buscarPorId(query, id)
+            return response
+        } 
+        catch (error) {
+            throw error
+        }
     }
 
-    static atualizarIngressoPorId(id, data) {
-        this.atualizarPorId("ingresso", id, data);
+
+    /**
+     * Método de deleção de registros específicos na tabela Ingresso através de um identificador
+     * @param {string} id 
+     */
+    static async deletarIngressoPorId(id){
+        const query = `
+        DELETE FROM ${INGRESSO_TABLE} WHERE id_ingresso = ?
+        `
+        try {
+            await this.deletarPorId(query, id)
+        } catch (error) {
+            throw error
+        }
     }
+
+    /**
+     * Atualiza um registro específico da tabela Ingresso através de um identificador
+     * @param {string} id 
+     * @param {any} data 
+     */
+    
 }
 
 export default IngressoDAO;

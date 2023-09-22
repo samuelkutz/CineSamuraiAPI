@@ -8,73 +8,80 @@ class PrecoController{
      * @param {Express} app 
      */
     static rotas(app){
-        
         /**
-         * Rota para buscar preço pelo id
+         * Rota para buscar todos os preços
          */
-        app.get("/preco/:id", (req, res)=>{
-            const id = req.params.id
-            const isValid = ValidacaoPreco.validarExistenciaPorId(id)
-            if(isValid){
-                const resposta = PrecoDAO.buscarPrecoPorId(id)
-                res.status(200).json(resposta)
+        app.get("/preco", async (req, res) => {
+            try{
+                const preco = await PrecoDAO.buscarTodosOsPreco()
+                res.status(200).json(preco)
             }
-            res.status(404).json({error: true, message: `Preço não encontrado para o id ${id}`})
-        })
-        
-        /**
-         * Rota para deletar preço
-         */
-        app.delete("/preco/:id", (req, res)=>{
-            const id = req.params.id
-            const isValid = ValidacaoPreco.validarExistenciaPorId(id)
-            if(isValid){
-                PrecoDAO.deletarUsuarioPorId(id)
-                res.status(200).json({error: false, message: "Preço removido com sucesso"})
+            catch (error) {
+                console.log(error)
+                res.status(404).json({...error})
             }
-            res.status(404).json({error: true, message: `Preço não encontrado para o id ${id}`})
         })
 
         /**
-         * Rota para inserir um novo preço
+         * Rota para buscar precos pelo id
+         */
+        app.get("/Preco/:id", async (req, res) => {
+            const id = req.params.id
+            try {
+                const resposta = await PrecoDAO.buscarPrecoPorId(id)
+                res.status(200).json(resposta)
+            } 
+            catch (error) {
+                console.log(error)
+                res.status(404).json({id: id, ...error})
+            }
+        })
+
+        /**
+         * Rota para deletar precos pelo id
+         */
+        app.delete("/Preco/:id", async (req, res) => {
+            const id = req.params.id
+            try {
+                await ValidacaoPreco.validarExistenciaPorId(id)
+                PrecoDAO.deletarPrecoPorId(id)
+                res.status(200).json({ error: false, message: "Preço deletado com sucesso"})
+            } 
+            catch (error) {
+                console.log(error)
+                res.status(404).json({ id: id, ...error })
+            }
+        })
+
+        /**
+         * Rota para inserir um novo preco
          */
         app.post("/preco", async (req, res)=>{
             const body = Object.values(req.body)
-            const isValid = ValidacaoServices.validaCamposPreco(...body)
-            if(isValid){
+
+            try {
+                await ValidacaoPreco.validaCamposPreco(...body)
                 const PrecoModelado = new PrecoModel(...body)
                 try {
                     await PrecoDAO.inserirPreco(PrecoModelado)
-                    res.status(201).json({error: false, message: "Preço inserido com sucesso"})
+                    res.status(201).json({error: false, message: "Preço adicionado com sucesso"})
                 } 
                 catch (error) {
+                    console.log(error)
                     res.status(503).json({error: true, message: `Servidor indisponível no momento`})
                 }
             } 
-            else{
+            catch (error) {
+                console.log(error)
                 res.status(400).json({error: true, message: `Campos inválidos`})
             }
         })
 
         /**
-         * Rota para atualizar um registro já existente na tabela preço
+         * Rota para atualizar um registro já existente na tabela preco
          */
-        app.put("/preco/:id", (req, res)=>{
-            const id = req.params.id
-            const body = req.body
-            const exists = ValidacaoPreco.validarExistenciaPorId(id)
-            const isValid = ValidacaoPreco.validaCamposPreco(body.dia_semana, body.valor)
-            if(exists){
-                if(isValid){
-                    const PrecoModelado = new PrecoModel(body.dia_semana, body.valor)
-                    PrecoDAO.AtualizarPrecoPorId(id, PrecoModelado)
-                    res.status(204).json({error: false, message: `Campos atualizados`})
-                }
-                res.status(400).json({error: true, message: `Campos invalidos`})
-            }
-            res.status(404).json({error: true, message: `Preco não encontrado para o id ${id}`})
-        })
-    }
+        
+    } //fecha static rotas
 }
 
 export default PrecoController
