@@ -84,18 +84,18 @@ class UsuariosController{
                 await ValidacaoUsuarios.validarExistenciaPorId(id)
 
                 try {
-                    await ValidacaoUsuarios.validaCamposUsuario(body.nome, body.sobrenome, body.email, body.cpf, body.senha, body.telefone)
-                    const usuarioModelado = new UsuariosModel(body.nome, body.sobrenome, body.email, body.cpf, body.senha, body.telefone)
-    
+                    console.log(body)
+
+                    await ValidacaoUsuarios.validaCamposUsuario(body.nome_usuario, body.sobrenome, body.email_cadastro, body.cpf, body.senha_cadastro, body.telefone)
+                    const usuarioModelado = new UsuariosModel(body.nome_usuario, body.sobrenome, body.email_cadastro, body.cpf, body.senha_cadastro, body.telefone)
 
                     UsuariosDAO.atualizarUsuarioPorId(id, usuarioModelado)
-                    console.log(usuarioModelado)
                     res.status(200).json({error: false, message: `Campos atualizados`})
                 } catch (error) {
                     console.log(error)
                     res.status(400).json({error: true, message: `Campos invalidos`})
                 }
-            } 
+            }
             catch (error) {
                 console.log(error)
                 res.status(404).json({error: true, message: `Usuário não encontrado para o id ${id}`})

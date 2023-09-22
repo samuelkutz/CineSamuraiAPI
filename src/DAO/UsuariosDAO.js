@@ -14,8 +14,13 @@ class UsuariosDAO extends DAO {
         INSERT INTO ${CADASTRO_USUARIOS_TABLE} (nome_usuario, sobrenome, email_cadastro, cpf, senha_cadastro, telefone) VALUES (?,?,?,?,?,?)
         `
 
-        const resultado = await this.inserir(query, dataValues)
-        return resultado
+        try {
+            const resultado = await this.inserir(query, dataValues)
+            return resultado
+        } catch (error) {
+            console.error(error)
+            throw error
+        }
     }
 
     /**
@@ -26,7 +31,14 @@ class UsuariosDAO extends DAO {
         const query = `
         SELECT * FROM ${CADASTRO_USUARIOS_TABLE};
         `
-        return await this.buscar(query)
+
+        try {
+            const response = await this.buscar(query)
+            return response
+        } catch (error) {
+            console.error(error)
+            throw error
+        }
     }
 
     /**
@@ -43,6 +55,7 @@ class UsuariosDAO extends DAO {
             return response
         } 
         catch (error) {
+            console.error(error)
             throw error
         }
     }
@@ -60,6 +73,7 @@ class UsuariosDAO extends DAO {
             return resposta
         }
         catch (error){
+            console.error(error)
             throw error
         }
     }
@@ -77,6 +91,7 @@ class UsuariosDAO extends DAO {
             return resposta
         }
         catch (error){
+            console.error(error)
             throw error
         }
     }
@@ -92,6 +107,7 @@ class UsuariosDAO extends DAO {
         try {
             await this.deletarPorId(query, id)
         } catch (error) {
+            console.error(error)
             throw error
         }
     }
@@ -103,12 +119,15 @@ class UsuariosDAO extends DAO {
      */
     static async atualizarUsuarioPorId(id, data){
         const query = `
-        UPDATE ${CADASTRO_USUARIOS_TABLE} SET (id_cadastro, nome_usuario, sobrenome, email_cadastro, cpf, senha_cadastro, telefone, id_endereco_fk) = (?,?,?,?,?,?,?,?) WHERE id_cadastro = ?
+        UPDATE ${CADASTRO_USUARIOS_TABLE} SET (id_cadastro, nome_usuario, sobrenome, email_cadastro, cpf, senha_cadastro, telefone, id_endereco_fk) = (?,?,?,?,?,?,?,?) WHERE id_cadastro = ?;
         `
         const values = Object.values(data)
 
-        try {            
-            await this.atualizarPorId(query, id, [id , ...values])
+        try {
+            const data = [id, ...values]
+
+            console.log(data)
+            await this.atualizarPorId(query, id, data)
         } catch (error) {
             console.log(error)
             throw error
