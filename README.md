@@ -25,10 +25,156 @@
 <p>cep-promise -> Utilizada para realizar a validação do CEP inserido</p>
 (Documentação)[https://www.npmjs.com/package/cep-promise]
 
-<h2>⚙️ Executando os testes</h2>
-<p>Isso executará os testes e exibirá os resultados no terminal.</p>
+# Exemplo de utilização da API - CRUD de Usuários
 
-<p></p>
+Esta documentação descreve as operações CRUD (Create, Read, Update, Delete) disponíveis para a entidade "Usuários" em nossa API para demonstração. Essas operações permitem gerenciar informações de usuários em nosso sistema.
+Para isso, afim de exemplificar nesta documentação, utilizamos o software Insomnia, mas pode-se utilizar outros similares. Lembrando que os dados utilizados são fictícios, apenas para fins de estudos.
+
+## Endpoints
+
+### Listar Todos os Usuários
+
+**Método**: GET
+**Rota**: `/usuarios`
+
+**Descrição**: Retorna todos os usuários cadastrados no sistema.
+
+**Exemplo de Requisição**:
+
+GET - http://localhost:3000/usuarios
+
+
+**Exemplo de Resposta (200 OK)**:
+
+```json
+[
+    {
+		"id_cadastro": 1,
+		"nome_usuario": "João",
+		"sobrenome": "Silva",
+		"email_cadastro": "joao.silva@gmail.com",
+		"cpf": "01256685202",
+		"senha_cadastro": "12345678",
+		"telefone": "11123456781",
+		"id_endereco_fk": null
+	},
+	{
+		"id_cadastro": 2,
+		"nome_usuario": "Maria",
+		"sobrenome": "Santos",
+		"email_cadastro": "maria.santos@hotmail.com",
+		"cpf": "12663358995",
+		"senha_cadastro": "12568749",
+		"telefone": "21987654321",
+		"id_endereco_fk": null
+	}
+]
+```
+
+### Buscar Usuário pelo ID
+
+**Método**: GET
+**Rota**: `/usuarios/:id`
+
+**Descrição**: Retorna um usuário com base no ID fornecido.
+
+**Parâmetros de Rota**:
+- `id` (integer): O ID do usuário a ser recuperado.
+
+**Exemplo de Requisição**:
+GET- http://localhost:3000/usuarios/2
+
+**Exemplo de Resposta (200 OK)**:
+
+```json
+{
+	"id_cadastro": 2,
+	"nome_usuario": "Maria",
+	"sobrenome": "Santos",
+	"email_cadastro": "maria.santos@hotmail.com",
+	"cpf": "12663358995",
+	"senha_cadastro": "12568749",
+	"telefone": "21987654321",
+	"id_endereco_fk": null
+}
+```
+
+
+
+### Inserir Novo Usuário
+
+**Método**: POST
+**Rota**: `/usuarios`
+
+**Descrição**: Insere um novo usuário no sistema.
+
+**Corpo da Solicitação (JSON)**:
+
+```json
+{	
+	"nome_usuario": "Eimael",
+	"sobrenome": "Bonito Lindo",
+	"email_cadastro": "eimael.bonito@gmail.com",
+	"cpf": "01256685250",
+	"senha_cadastro": "12345678",
+	"telefone": "11123456888",
+	"id_endereco_fk": null
+}
+```
+
+**Você verá a mensagem: "Usuário cadastrado com sucesso"
+
+### Atualizar Usuário Existente
+
+**Método**: PUT
+**Rota**: `/usuarios/:id`
+
+**Descrição**: Atualiza os dados de um usuário existente com base no ID fornecido.
+
+**Parâmetros de Rota**:
+- `id` (integer): O ID do usuário a ser atualizado.
+
+**Corpo da Solicitação (JSON)**:
+
+```json
+{	
+	"nome_usuario": "Eimael",
+	"sobrenome": "Bonito Lindo Maravilhoso",
+	"email_cadastro": "eimael.bonito@gmail.com",
+	"cpf": "01256685250",
+	"senha_cadastro": "12345678",
+	"telefone": "11123456888",
+	"id_endereco_fk": null
+}
+```
+
+**Exemplo de Requisição
+
+**PUT - http://localhost:3000/usuarios/31
+
+**Exemplo de Resposta (200 OK): "Campos atualizados"
+
+### Excluir Usuário
+
+**Método**: DELETE
+**Rota**: `/usuarios/:id`
+
+**Descrição**: Exclui um usuário com base no ID fornecido.
+
+**Parâmetros de Rota**:
+- `id` (integer): O ID do usuário a ser excluído.
+
+**Exemplo de Requisição**:
+
+DELETE - http://localhost:3000/usuarios/31
+
+**Exemplo de Resposta (200 OK)**:
+"Campos atualizados"
+
+
+
+
+
 
 <h2>🛠️ Construído com:</h2>
 <h3>Ferramentas utilizadas</h3>
