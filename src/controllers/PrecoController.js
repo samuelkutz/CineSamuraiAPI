@@ -25,7 +25,7 @@ class PrecoController{
         /**
          * Rota para buscar precos pelo id
          */
-        app.get("/Preco/:id", async (req, res) => {
+        app.get("/preco/:id", async (req, res) => {
             const id = req.params.id
             try {
                 const resposta = await PrecoDAO.buscarPrecoPorId(id)
@@ -40,7 +40,7 @@ class PrecoController{
         /**
          * Rota para deletar precos pelo id
          */
-        app.delete("/Preco/:id", async (req, res) => {
+        app.delete("/preco/:id", async (req, res) => {
             const id = req.params.id
             try {
                 await ValidacaoPreco.validarExistenciaPorId(id)

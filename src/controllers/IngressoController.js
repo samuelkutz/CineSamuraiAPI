@@ -13,7 +13,7 @@ class IngressoController{
          */
         app.get("/ingresso", async (req, res) => {
             try{
-                const ingresso = await IngressoDAO.buscarTodosOsIngresso()
+                const ingresso = await IngressoDAO.buscarTodosOsIngressos()
                 res.status(200).json(ingresso)
             }
             catch (error) {
@@ -25,7 +25,7 @@ class IngressoController{
         /**
          * Rota para buscar ingressos pelo id
          */
-        app.get("/Ingresso/:id", async (req, res) => {
+        app.get("/ingresso/:id", async (req, res) => {
             const id = req.params.id
             try {
                 const resposta = await IngressoDAO.buscarIngressoPorId(id)
@@ -53,11 +53,11 @@ class IngressoController{
         /**
          * Rota para inserir um novo tipo de ingresso
          */
-        app.post("ingresso", async (req, res)=>{
+        app.post("/ingresso", async (req, res)=>{
             const body = Object.values(req.body)
 
             try {
-                await ValidacaoIngresso.validaCamposIngresso(...body)
+                await ValidacaoIngresso.validaCampoIngresso(...body)
                 const ingressoModelado = new IngressoModel(...body)
                 try {
                     await IngressoDAO.inserirIngresso(ingressoModelado)

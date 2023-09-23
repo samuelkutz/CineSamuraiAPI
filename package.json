@@ -7,11 +7,12 @@
   "scripts": {
     "start": "node ./app.js",
     "database": "node ./src/database/createAndPopulate.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js" 
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "cep-promise": "^4.4.0",
     "cors": "2.8.5",
     "cpf-cnpj-validator": "1.0.3",
     "dotenv": "16.3.1",
