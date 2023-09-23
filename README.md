@@ -22,7 +22,8 @@
 <h2>🔧 Bibliotecas Utilizadas </h2>
 <p>cpf-cnpj-validator -> Utilizada para realizar a validação do CPF inserido. </p>
 (Documentação)[https://www.npmjs.com/package/cpf-cnpj-validator]
-
+<p>cep-promise -> Utilizada para realizar a validação do CEP inserido</p>
+(Documentação)[https://www.npmjs.com/package/cep-promise]
 
 <h2>⚙️ Executando os testes</h2>
 <p>Isso executará os testes e exibirá os resultados no terminal.</p>
