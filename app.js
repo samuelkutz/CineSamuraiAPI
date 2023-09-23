@@ -9,7 +9,7 @@ import IngressoController from "./src/controllers/IngressoController.js"
 import PoltronaController from "./src/controllers/PoltronaController.js"
 import ProgramacaoGeralController from "./src/controllers/ProgramacaoGeralController.js"
 import SalaController from "./src/controllers/SalaController.js"
-// import SessaoController from "./src/controllers/SessaoController.js"
+import SessaoController from "./src/controllers/SessaoController.js"
 
 config()
 
@@ -32,4 +32,4 @@ IngressoController.rotas(app)
 PoltronaController.rotas(app)
 ProgramacaoGeralController.rotas(app)
 SalaController.rotas(app)
-// SessaoController.rotas(app)
+SessaoController.rotas(app)
