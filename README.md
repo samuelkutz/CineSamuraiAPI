@@ -122,7 +122,7 @@ GET- http://localhost:3000/usuarios/2
 }
 ```
 
-**Você verá a mensagem: "Usuário cadastrado com sucesso"
+**Você verá a mensagem: "Usuário cadastrado com sucesso"**
 
 ### Atualizar Usuário Existente
 
@@ -148,11 +148,11 @@ GET- http://localhost:3000/usuarios/2
 }
 ```
 
-**Exemplo de Requisição
+**Exemplo de Requisição**
 
-**PUT - http://localhost:3000/usuarios/31
+**PUT - http://localhost:3000/usuarios/31**
 
-**Exemplo de Resposta (200 OK): "Campos atualizados"
+**Exemplo de Resposta (200 OK): "Campos atualizados"**
 
 ### Excluir Usuário
 
