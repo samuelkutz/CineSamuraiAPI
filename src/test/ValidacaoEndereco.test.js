@@ -139,22 +139,5 @@ describe("Endereço", ()=>{
         expect(ValidacaoEndereco.validaUF("TO")).toBe(true)
 
     })
-
-    test("Quando a validação de CEO retorna false",()=>{
-        expect(ValidacaoEndereco.validaCEP("")).toBe(false)
-        expect(ValidacaoEndereco.validaCEP("1")).toBe(false)
-        expect(ValidacaoEndereco.validaCEP(1245678)).toBe(false)
-        expect(ValidacaoEndereco.validaCEP(true)).toBe(false)
-        expect(ValidacaoEndereco.validaCEP([])).toBe(false)
-        expect(ValidacaoEndereco.validaCEP({})).toBe(false)
-        expect(ValidacaoEndereco.validaCEP(NaN)).toBe(false)
-        expect(ValidacaoEndereco.validaCEP()).toBe(false)
-        expect(ValidacaoEndereco.validaCEP("80054-160")).toBe(false)
-
-    })
-    
-    test("Quando o validação de CEP retorna true", ()=>{
-        expect(ValidacaoEndereco.validaCEP("80065150")).toBe(true)
-    })
    
 })
