@@ -103,8 +103,6 @@ class ValidacaoUsuarios{
      * @returns 
      */
     static validaCamposUsuario(nome, sobrenome, email, numCPF, senha, telefone){
-        
-
         const ehValido = this.validaNome(nome) && this.validaSobrenome(sobrenome) && this.validaEmail(email) && this.validaCPF(numCPF) 
         && this.validaSenha(senha) && this.validaTelefone(telefone)
         return ehValido

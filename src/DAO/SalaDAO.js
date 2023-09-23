@@ -81,6 +81,20 @@ class SalaDAO extends DAO {
      * @param {string} id 
      * @param {any} data 
      */
+    static async atualizarSalaPorId(id, data){
+        const query = `
+        UPDATE ${SALA_TABLE} SET (capacidade, nome_sala) = (?,?,) WHERE id_sala = ?;
+        `
+        const values = Object.values(data)
+
+        try {
+            await this.atualizarPorId(query, id, [...values])
+        } 
+        catch (error) {
+            console.error(error)
+            throw error
+        }
+    }
 }
 
 export default SalaDAO;

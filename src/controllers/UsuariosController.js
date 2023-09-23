@@ -17,7 +17,7 @@ class UsuariosController{
                 res.status(200).json(usuarios)
             }
             catch (error) {
-                console.log(error)
+                console.error(error)
                 res.status(404).json({...error})
             }
         })
@@ -32,7 +32,7 @@ class UsuariosController{
                 res.status(200).json(resposta)
             } 
             catch (error) {
-                console.log(error)
+                console.error(error)
                 res.status(404).json({id: id, ...error})
             }
         })
@@ -45,7 +45,7 @@ class UsuariosController{
                 res.status(200).json({ error: false, message: "Usuário deletado com sucesso"})
             } 
             catch (error) {
-                console.log(error)
+                console.error(error)
                 res.status(404).json({ id: id, ...error })
             }
         })
@@ -64,12 +64,12 @@ class UsuariosController{
                     res.status(201).json({error: false, message: "Usuário cadastrado com sucesso"})
                 } 
                 catch (error) {
-                    console.log(error)
+                    console.error(error)
                     res.status(503).json({error: true, message: `Servidor indisponível no momento`})
                 }
             } 
             catch (error) {
-                console.log(error)
+                console.error(error)
                 res.status(400).json({error: true, message: `Campos inválidos`})
             }
         })
@@ -79,25 +79,24 @@ class UsuariosController{
          */
         app.put("/usuarios/:id", async (req, res)=>{
             const id = req.params.id
-            const body = req.body
+            const body = Object.values(req.body)
             try {
                 await ValidacaoUsuarios.validarExistenciaPorId(id)
 
                 try {
-                    console.log(body)
-
-                    await ValidacaoUsuarios.validaCamposUsuario(body.nome_usuario, body.sobrenome, body.email_cadastro, body.cpf, body.senha_cadastro, body.telefone)
-                    const usuarioModelado = new UsuariosModel(body.nome_usuario, body.sobrenome, body.email_cadastro, body.cpf, body.senha_cadastro, body.telefone)
+                    await ValidacaoUsuarios.validaCamposUsuario(...body)
+                    const usuarioModelado = new UsuariosModel(...body)
 
                     UsuariosDAO.atualizarUsuarioPorId(id, usuarioModelado)
-                    res.status(200).json({error: false, message: `Campos atualizados`})
-                } catch (error) {
-                    console.log(error)
+                    res.status(204).json({error: false, message: "Usuário atualizado com sucesso"})
+                } 
+                catch (error) {
+                    console.error(error)
                     res.status(400).json({error: true, message: `Campos invalidos`})
                 }
             }
             catch (error) {
-                console.log(error)
+                console.error(error)
                 res.status(404).json({error: true, message: `Usuário não encontrado para o id ${id}`})
             }
         })

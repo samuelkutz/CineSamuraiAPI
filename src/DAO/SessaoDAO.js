@@ -81,6 +81,20 @@ class SessaoDAO extends DAO {
      * @param {string} id 
      * @param {any} data 
      */
+    static async atualizarSessaoPorId(id, data){
+        const query = `
+        UPDATE ${SESSAO_TABLE} SET (id_filme_dk, tipo_sessao, id_programacao, sala_fk, id_poltrona_fk) = (?,?,?,?,?) WHERE id_sessao = ?;
+        `
+        const values = Object.values(data)
+
+        try {
+            await this.atualizarPorId(query, id, [...values])
+        } 
+        catch (error) {
+            console.error(error)
+            throw error
+        }
+    }
 }
 
 export default SessaoDAO;

@@ -97,14 +97,17 @@ class DAO {
      * Atualiza um registro específico na base de dados através de um identificador
      * @param {string} query 
      * @param {string} id 
-     * @param {any} data 
+     * @param {Array<any>} data 
      */
     static atualizarPorId(query, id, data){
         return new Promise((resolve, reject) => {
-            Database.run(query, [...data, id], (error) => {
+            Database.run(query, [...data, id], (error, row) => {
                 if(error){
                     console.error(error)
                     reject(error)
+                }
+                else{
+                    resolve(row)
                 }
             })
         })

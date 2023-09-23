@@ -81,7 +81,20 @@ class ProgramacaoGeralDAO extends DAO {
      * @param {string} id 
      * @param {any} data 
      */
-   
+    static async atualizarProgramacaoPorId(id, data){
+        const query = `
+        UPDATE ${PROGRAMACAO_GERAL_TABLE} SET (id_filme_fk, data_horario, tipo_linguagem, id_preco_fk) = (?,?,?,?) WHERE id_programacao= ?;
+        `
+        const values = Object.values(data)
+
+        try {
+            await this.atualizarPorId(query, id, [...values])
+        } 
+        catch (error) {
+            console.error(error)
+            throw error
+        }
+    }
 }
 
 export default ProgramacaoGeralDAO;

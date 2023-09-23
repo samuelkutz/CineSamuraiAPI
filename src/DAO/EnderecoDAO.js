@@ -82,7 +82,20 @@ class EnderecoDAO extends DAO {
      * @param {string} id 
      * @param {any} data 
      */
-   
+    static async atualizarEnderecoPorId(id, data){
+        const query = `
+        UPDATE ${ENDERECO_TABLE} SET (logradouro, numero, complemento, cidade, uf, cep) = (?,?,?,?,?,?) WHERE id_endereco = ?;
+        `
+        const values = Object.values(data)
+
+        try {
+            await this.atualizarPorId(query, id, [...values])
+        } 
+        catch (error) {
+            console.error(error)
+            throw error
+        }
+    }
 }
 
 export default EnderecoDAO;

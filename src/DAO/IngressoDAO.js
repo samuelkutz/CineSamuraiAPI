@@ -81,7 +81,20 @@ class IngressoDAO extends DAO {
      * @param {string} id 
      * @param {any} data 
      */
-    
+    static async atualizarIngressoPorId(id, data){
+        const query = `
+        UPDATE ${INGRESSO_TABLE} SET (tipo_ingresso, id_preco_fk, id_sessao_fk, id_usuario_fk) = (?,?,?,?) WHERE id_ingresso = ?;
+        `
+        const values = Object.values(data)
+
+        try {
+            await this.atualizarPorId(query, id, [...values])
+        } 
+        catch (error) {
+            console.error(error)
+            throw error
+        }
+    }
 }
 
 export default IngressoDAO;

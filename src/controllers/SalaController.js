@@ -77,7 +77,29 @@ class SalaController{
         /**
          * Rota para atualizar um registro já existente na tabeaa salas
          */
-        
+        app.put("/sala/:id", async (req, res)=>{
+            const id = req.params.id
+            const body = Object.values(req.body)
+            try {
+                await ValidacaoSala.validarExistenciaPorId(id)
+
+                try {
+                    await ValidacaoSala.validaCamposSala(...body)
+                    const salaModelada = new UsuariosModel(...body)
+
+                    SalaDAO.atualizarUsuarioPorId(id, salaModelada)
+                    res.status(204).json({error: false, message: "Sala atualizada com sucesso"})
+                } 
+                catch (error) {
+                    console.error(error)
+                    res.status(400).json({error: true, message: `Campos invalidos`})
+                }
+            }
+            catch (error) {
+                console.error(error)
+                res.status(404).json({error: true, message: `Sala não encontrada para o id ${id}`})
+            }
+        })
     }
 }
 

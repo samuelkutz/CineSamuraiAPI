@@ -81,7 +81,20 @@ class FilmesDAO extends DAO {
      * @param {string} id 
      * @param {any} data 
      */
-    
+    static async atualizarFilmesPorId(id, data){
+        const query = `
+        UPDATE ${FILMES_TABLE} SET (nome_filme, linguagem_original, classificacao_indicativa, duracao) = (?,?,?,?) WHERE id_filme = ?;
+        `
+        const values = Object.values(data)
+
+        try {
+            await this.atualizarPorId(query, id, [...values])
+        } 
+        catch (error) {
+            console.error(error)
+            throw error
+        }
+    }
 }
 
 export default FilmesDAO;

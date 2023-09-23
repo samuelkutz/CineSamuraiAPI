@@ -81,7 +81,20 @@ class PrecoDAO extends DAO {
      * @param {string} id 
      * @param {any} data 
      */
-    
+    static async atualizarPrecoPorId(id, data){
+        const query = `
+        UPDATE ${PRECO_TABLE} SET (dia_semana, valor) = (?,?) WHERE id_preco = ?;
+        `
+        const values = Object.values(data)
+
+        try {
+            await this.atualizarPorId(query, id, [...values])
+        } 
+        catch (error) {
+            console.error(error)
+            throw error
+        }
+    }
 }
 
 export default PrecoDAO;

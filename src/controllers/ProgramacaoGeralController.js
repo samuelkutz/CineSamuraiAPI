@@ -77,6 +77,29 @@ class ProgramacaoGeralController{
         /**
          * Rota para atualizar um registro já existente na tabela programação
          */
+        app.put("/programacao/:id", async (req, res)=>{
+            const id = req.params.id
+            const body = Object.values(req.body)
+            try {
+                await ValidacaoProgramacaoGeral.validarExistenciaPorId(id)
+
+                try {
+                    await ValidacaoProgramacaoGeral.validaCamposProgramacaoGeral(...body)
+                    const ProgramacaoModelada = new ProgramacaoGeralModel(...body)
+
+                    ProgramacaoGeralDAO.atualizarProgramacaoPorId(id, ProgramacaoModelada)
+                    res.status(204).json({error: false, message: "Programação Geral atualizada com sucesso"})
+                } 
+                catch (error) {
+                    console.error(error)
+                    res.status(400).json({error: true, message: `Campos invalidos`})
+                }
+            }
+            catch (error) {
+                console.error(error)
+                res.status(404).json({error: true, message: `Programação Geral não encontrada para o id ${id}`})
+            }
+        })
     }
 }
 

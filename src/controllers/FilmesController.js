@@ -1,6 +1,7 @@
 import FilmesModel from "../models/FilmesModel.js"
 import ValidacaoFilmes from "../services/ValidacaoFilme.js"
 import FilmesDAO from "../DAO/FilmesDAO.js"
+import IngressoDAO from "../DAO/IngressoDAO.js"
 
 class FilmesController{
     /**
@@ -77,7 +78,29 @@ class FilmesController{
         /**
          * Rota para atualizar um registro já existente na tabela filmes
          */
-        
+        app.put("/filmes/:id", async (req, res)=>{
+            const id = req.params.id
+            const body = Object.values(req.body)
+            try {
+                await ValidacaoFilmes.validarExistenciaPorId(id)
+
+                try {
+                    await ValidacaoFilmes.validaCamposFilme(...body)
+                    const filmeMOdelado = new FilmesModel(...body)
+
+                    FilmesDAO.atualizarFilmesPorId(id, filmeMOdelado)
+                    res.status(204).json({error: false, message: "Filmes atualizado com sucesso"})
+                } 
+                catch (error) {
+                    console.error(error)
+                    res.status(400).json({error: true, message: `Campos invalidos`})
+                }
+            }
+            catch (error) {
+                console.error(error)
+                res.status(404).json({error: true, message: `Filmes não encontrado para o id ${id}`})
+            }
+        })
     }
 }
 
