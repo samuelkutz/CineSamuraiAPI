@@ -1,4 +1,4 @@
-<h1>CineSamurai</h1>
+<h1>CineSamuraiAPI</h1>
 
 <h3>Projeto em grupo modulo 4 - API para o Back-end do nosso site CineSamurai</h3> 
 
