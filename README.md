@@ -13,7 +13,7 @@
 <h2>🔧 Instalação </h2>
 <p>Para executar o projeto localmente, siga estas etapas:</p>
 <ul>
-<li>Clone esse repositório: https://github.com/samuelkutz/CineSamurai.git </li>
+<li>Clone esse repositório: https://github.com/samuelkutz/CineSamuraiAPI.git </li>
 <li>Navegue até o diretório do projeto: CineSamurai </li>
 <li>Instale as dependências usando npm [Node.js](https://nodejs.org/en): npm Install</li>
 <li>Inicie o servidor:  npm start </li>
