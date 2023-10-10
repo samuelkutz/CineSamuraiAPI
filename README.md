@@ -1,6 +1,6 @@
 <h1>CineSamurai</h1>
 
-<h3>Projeto em grupo modulo 4 - Criação do Back-end do CineSamurai</h3> 
+<h3>Projeto em grupo modulo 4 - API para o Back-end do nosso site CineSamurai</h3> 
 
 <p>O CineSamurai é um cinema que precisa adquirir tecnologia para auxiliar na venda de ingressos, a fim de facilitar e agilizar o atendimento aos clientes. Nesta primeira etapa do projeto, foi desenvolvido o backend dessa futura plataforma, utilizando a API REST com Node.js e o framework Express. </p>
 
